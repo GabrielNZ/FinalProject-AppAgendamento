@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/servicos")
 public class ServicosController {
     @Autowired
     private ServicosServices servicosServices;
 
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Servicos> getPorId(@PathVariable Long id){
         return ResponseEntity.ok().body(servicosServices.getServicoPorId(id));
     }
@@ -30,7 +30,7 @@ public class ServicosController {
     public ResponseEntity<Servicos> atualizarServico(@RequestBody Servicos servico){
         return ResponseEntity.ok().body(servicosServices.salvarServico(servico));
     }
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarServico(@PathVariable Long id) {
         servicosServices.deletarServico(id);
         return ResponseEntity.noContent().build();

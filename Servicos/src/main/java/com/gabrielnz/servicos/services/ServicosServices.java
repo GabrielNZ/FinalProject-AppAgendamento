@@ -15,7 +15,7 @@ public class ServicosServices {
     private ServicosRepository servicosRepository;
 
     public Servicos getServicoPorId(Long id) {
-        return servicosRepository.findById(id).orElseThrow(() -> new ServicosException("Usuario não encontrado"));
+        return servicosRepository.findById(id).orElseThrow(() -> new ServicosException("Servico não encontrado"));
     }
     public List<Servicos> getTodosServicos() {
         return servicosRepository.findAll();
@@ -33,7 +33,7 @@ public class ServicosServices {
         if(servicosRepository.existsById(id)) {
             servicosRepository.deleteById(id);
         }else{
-            throw new ServicosException("Usuario não encontrado");
+            throw new ServicosException("Servico não encontrado");
         }
     }
 }

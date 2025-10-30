@@ -3,7 +3,6 @@ package com.gabrielnz.usuario.controllers;
 import com.gabrielnz.usuario.entities.Tipo;
 import com.gabrielnz.usuario.entities.Usuario;
 import com.gabrielnz.usuario.services.UsuarioServices;
-import jakarta.validation.constraints.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,12 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/usuarios")
 public class UsuarioController {
     @Autowired
     private UsuarioServices usuarioServices;
 
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Usuario> getPorId(@PathVariable Long id){
         return ResponseEntity.ok().body(usuarioServices.getUsuarioPorId(id));
     }
@@ -32,13 +31,13 @@ public class UsuarioController {
     public ResponseEntity<Usuario> atualizarUsuario(@RequestBody Usuario usuario){
         return ResponseEntity.ok().body(usuarioServices.salvarUsuario(usuario));
     }
-    @PutMapping("{/id}/role")
+    @PutMapping("/{id}/role")
     public ResponseEntity<Usuario> trocarRoleUsuario(@PathVariable Long id, @RequestBody Tipo tipo){
         Usuario usuario = usuarioServices.getUsuarioPorId(id);
         usuario.setTipo(tipo);
         return ResponseEntity.ok().body(usuarioServices.salvarUsuario(usuario));
     }
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarUsuario(@PathVariable Long id) {
         usuarioServices.deletarUsuario(id);
         return ResponseEntity.noContent().build();
