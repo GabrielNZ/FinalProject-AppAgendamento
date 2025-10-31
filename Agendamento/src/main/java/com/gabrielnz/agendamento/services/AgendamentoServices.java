@@ -35,8 +35,8 @@ public class AgendamentoServices {
     @Transactional
     public Agendamento salvarAgendamento(Agendamento agendamento) {
         try {
-            UsuarioDTO usuario = usuarioFeingClient.getPorId(agendamento.getCliente_id()).getBody();
-            ServicoDTO servico = servicoFeingClient.getPorId(agendamento.getServico_id()).getBody();
+            UsuarioDTO usuario = usuarioFeingClient.getPorId(agendamento.getClienteId()).getBody();
+            ServicoDTO servico = servicoFeingClient.getPorId(agendamento.getServicoId()).getBody();
             if(usuario.tipo() == Tipo.PRESTADOR) {
                 throw new UsuarioException("O usuario precisa ser um Cliente");
             }

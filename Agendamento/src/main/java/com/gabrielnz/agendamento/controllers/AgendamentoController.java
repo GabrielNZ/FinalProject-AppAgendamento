@@ -1,7 +1,6 @@
 package com.gabrielnz.agendamento.controllers;
 
 import com.gabrielnz.agendamento.entities.Agendamento;
-import com.gabrielnz.agendamento.feignclient.dtos.UsuarioDTO;
 import com.gabrielnz.agendamento.feignclient.UsuarioFeingClient;
 import com.gabrielnz.agendamento.services.AgendamentoServices;
 import org.springframework.beans.factory.annotation.Autowired;

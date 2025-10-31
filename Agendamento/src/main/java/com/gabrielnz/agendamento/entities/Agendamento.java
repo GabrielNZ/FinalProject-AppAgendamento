@@ -11,8 +11,10 @@ public class Agendamento {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Integer dataHora;
-    private Long cliente_id;
-    private Long servico_id;
+    private Long clienteId;
+    private Long servicoId;
+    private Long prestadorId;
+    private Long disponibilidadeOcupadaId;
     private Status status;
 
     public Long getId() {
@@ -31,20 +33,36 @@ public class Agendamento {
         this.dataHora = dataHora;
     }
 
-    public Long getCliente_id() {
-        return cliente_id;
+    public Long getClienteId() {
+        return clienteId;
     }
 
-    public void setCliente_id(Long cliente_id) {
-        this.cliente_id = cliente_id;
+    public void setClienteId(Long clienteId) {
+        this.clienteId = clienteId;
     }
 
-    public Long getServico_id() {
-        return servico_id;
+    public Long getServicoId() {
+        return servicoId;
     }
 
-    public void setServico_id(Long servico_id) {
-        this.servico_id = servico_id;
+    public void setServicoId(Long servicoId) {
+        this.servicoId = servicoId;
+    }
+
+    public Long getPrestadorId() {
+        return prestadorId;
+    }
+
+    public void setPrestadorId(Long prestadorId) {
+        this.prestadorId = prestadorId;
+    }
+
+    public Long getDisponibilidadeOcupadaId() {
+        return disponibilidadeOcupadaId;
+    }
+
+    public void setDisponibilidadeOcupadaId(Long disponibilidadeOcupadaId) {
+        this.disponibilidadeOcupadaId = disponibilidadeOcupadaId;
     }
 
     public Status getStatus() {
