@@ -1,7 +1,9 @@
 package com.gabrielnz.agendamento.entities;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -10,10 +12,12 @@ public class Agendamento {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Integer dataHora;
+    private LocalDateTime dataHora;
     private Long clienteId;
     private Long servicoId;
     private Long prestadorId;
+    @Nullable
+    @Column(nullable = true)
     private Long disponibilidadeOcupadaId;
     private Status status;
 
@@ -25,11 +29,11 @@ public class Agendamento {
         this.id = id;
     }
 
-    public Integer getDataHora() {
+    public LocalDateTime getDataHora() {
         return dataHora;
     }
 
-    public void setDataHora(Integer dataHora) {
+    public void setDataHora(LocalDateTime dataHora) {
         this.dataHora = dataHora;
     }
 

@@ -36,7 +36,7 @@ public class AgendamentoController {
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarAgendamento(@PathVariable Long id) {
-        agendamentoServices.deletarAgendamento(id);
+        agendamentoServices.deletarCancelarAgendamento(id);
         return ResponseEntity.noContent().build();
     }
 }

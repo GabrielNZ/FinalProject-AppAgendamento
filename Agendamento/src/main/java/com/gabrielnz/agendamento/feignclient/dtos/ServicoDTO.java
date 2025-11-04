@@ -1,4 +1,6 @@
 package com.gabrielnz.agendamento.feignclient.dtos;
 
-public record ServicoDTO(Long id, String nome, String descricao, Integer duracaoMinutos, Double preco, Long prestador_id) {
+import jakarta.validation.constraints.NotNull;
+
+public record ServicoDTO(Long id, String nome, String descricao, @NotNull Integer duracaoMinutos, Double preco, Long prestador_id) {
 }
