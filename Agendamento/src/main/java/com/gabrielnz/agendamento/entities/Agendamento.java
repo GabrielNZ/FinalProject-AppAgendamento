@@ -19,6 +19,7 @@ public class Agendamento {
     @Nullable
     @Column(nullable = true)
     private Long disponibilidadeOcupadaId;
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     public Long getId() {

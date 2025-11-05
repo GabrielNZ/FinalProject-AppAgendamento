@@ -1,6 +1,7 @@
 package com.gabrielnz.usuario.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 
 import java.util.Objects;
 
@@ -11,8 +12,10 @@ public class Usuario{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
     private String nome;
+    @Email
     private String email;
     private String senha;
+    @Enumerated(EnumType.STRING)
     private Tipo tipo;
 
     public Long getId() {

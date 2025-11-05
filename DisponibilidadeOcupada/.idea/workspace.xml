@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39a0229b-060e-4b99-979a-23f61dd73edc" name="Changes" comment="Created: DisponibilidadeOcupada project. Changes on Agendamento project and Syntax error fixed." />
+    <list default="true" id="39a0229b-060e-4b99-979a-23f61dd73edc" name="Changes" comment="Created: DisponibilidadeOcupada project. Changes on Agendamento project and Syntax error fixed.">
+      <change beforePath="$PROJECT_DIR$/../DisponibilidadeOcupacada/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DisponibilidadeOcupacada/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DisponibilidadeOcupacada/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DisponibilidadeOcupacada/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DisponibilidadeOcupacada/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DisponibilidadeOcupacada/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DisponibilidadeOcupacada/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Notificacao/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Notificacao/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servicos/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Servicos/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,18 +33,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "GabrielNZ"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;GabrielNZ&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:GabrielNZ/FinalProject-AppAgendamento.git",
-    "accountId": "c08de751-c9d8-45da-833e-f0038415f0b0"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:GabrielNZ/FinalProject-AppAgendamento.git&quot;,
+    &quot;accountId&quot;: &quot;c08de751-c9d8-45da-833e-f0038415f0b0&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -49,23 +60,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/gabri/IdeaProjects/angendador_projetofinal/DisponibilidadeOcupada",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/gabri/IdeaProjects/angendador_projetofinal/DisponibilidadeOcupada&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.gabrielnz.disponibilidadeocupacada.services" />
@@ -100,6 +111,10 @@
       <updated>1761611310769</updated>
       <workItem from="1761611311818" duration="49000" />
       <workItem from="1761928156161" duration="7600000" />
+      <workItem from="1762272056775" duration="1908000" />
+      <workItem from="1762358258571" duration="219000" />
+      <workItem from="1762358506072" duration="5000" />
+      <workItem from="1762360011554" duration="250000" />
     </task>
     <task id="LOCAL-00001" summary="Created: DisponibilidadeOcupada project. Changes on Agendamento project and Syntax error fixed.">
       <option name="closed" value="true" />
@@ -109,7 +124,23 @@
       <option name="project" value="LOCAL" />
       <updated>1761936698085</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Created: DisponibilidadeOcupada project. Changes on Agendamento project and Syntax error fixed.">
+      <option name="closed" value="true" />
+      <created>1762272120839</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1762272120839</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Created: DisponibilidadeOcupada project. Changes on Agendamento project and Syntax error fixed.">
+      <option name="closed" value="true" />
+      <created>1762272143837</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1762272143837</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

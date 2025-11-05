@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c2e1630-3f19-420f-b134-73a771ab1226" name="Changes" comment="" />
+    <list default="true" id="1c2e1630-3f19-420f-b134-73a771ab1226" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DisponibilidadeOcupada/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DisponibilidadeOcupada/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Notificacao/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Notificacao/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,6 +63,16 @@
   }
 }</component>
   <component name="RunManager">
+    <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
+      <setting name="path" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="file://$PROJECT_DIR$" />
+      <setting name="debug" value="false" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="ms-disponibilidadeOcupada" />
       <method v="2">
@@ -95,6 +114,7 @@
       <workItem from="1761610816374" duration="732000" />
       <workItem from="1761672391163" duration="653000" />
       <workItem from="1761928146682" duration="8000" />
+      <workItem from="1762360024027" duration="33000" />
     </task>
     <servers />
   </component>
