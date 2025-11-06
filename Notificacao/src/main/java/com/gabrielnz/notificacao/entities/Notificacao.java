@@ -22,7 +22,7 @@ public class Notificacao {
     private String prestadorEmail;
     private LocalDateTime dataHora;
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private StatusNotificacao status;
     @Enumerated(EnumType.STRING)
     private TipoDeNotificacao tipoDeNotificacao;
     private Integer tentativas; //tentativas de reenviar, para evitar sobrecarga em notificações que nao enviam de jeito nenhum
@@ -83,11 +83,11 @@ public class Notificacao {
         this.dataHora = dataHora;
     }
 
-    public Status getStatus() {
+    public StatusNotificacao getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(StatusNotificacao status) {
         this.status = status;
     }
 

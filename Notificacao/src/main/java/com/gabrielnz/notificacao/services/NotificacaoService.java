@@ -1,9 +1,6 @@
 package com.gabrielnz.notificacao.services;
 
-import com.gabrielnz.notificacao.entities.EmailDTO;
-import com.gabrielnz.notificacao.entities.Notificacao;
-import com.gabrielnz.notificacao.entities.Status;
-import com.gabrielnz.notificacao.entities.TipoDeNotificacao;
+import com.gabrielnz.notificacao.entities.*;
 import com.gabrielnz.notificacao.entities.exceptions.NotificacaoException;
 import com.gabrielnz.notificacao.repositories.NotificacaoRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -36,7 +33,7 @@ public class NotificacaoService {
         return notificacaoRepository.findAllByUsuarioId(idUsuario);
     }
 
-    public List<Notificacao> getByStatus(Status status) {
+    public List<Notificacao> getByStatus(StatusNotificacao status) {
         return notificacaoRepository.findByStatusIn(List.of(status));
     }
 
@@ -57,12 +54,13 @@ public class NotificacaoService {
             mailMessage.setText(emailDTO.getText());
             log.info("Tentando enviar e-mail para {}", notificacao.getUsuarioEmail());
             mailSender.send(mailMessage);
-            notificacao.setStatus(Status.ENVIADO);
+            notificacao.setStatus(StatusNotificacao.ENVIADO);
+            notificacaoRepository.save(notificacao);
         } catch (MailException e) {
-            notificacao.setStatus(Status.FALHOU);
+            notificacao.setStatus(StatusNotificacao.FALHOU);
             log.error("Falha ao enviar e-mail: {}", e.getMessage());
+            notificacaoRepository.save(notificacao);
         }
-        notificacaoRepository.save(notificacao);
     }
 
     public EmailDTO conteudoEmail(Notificacao notificacao) {
@@ -129,7 +127,10 @@ public class NotificacaoService {
             email.setText("""
                     Olá!
                     
-                    O cliente %s compareceu ao agendamento do serviço: %s ? ✅❌
+                    O cliente %s compareceu ao agendamento do serviço: %s ?
+                    
+                    ✅ Se sim nada precisa ser feito!
+                    ❌ Caso não! -> Confirme falta em até 24 horas, após este periodo sera marcado permanentemente como presença.
                     
                     Data/Horário: %s
                     
@@ -141,11 +142,11 @@ public class NotificacaoService {
             email.setText("""
                     Olá, %s!
                     
-                    Identificamos que você não compareceu ao agendamento de %s ⚠️
+                    Identificamos que você não compareceu ao agendamento de %s ❌
                     
                     Data/Horário: %s
                     
-                    Caso tenha tido um imprevisto, você pode reagendar quando quiser ✅
+                    Caso isso seja um engano entre em contato com nosso suporte!
                     Porem esteja ciente que não ter avisado previamente registra uma falta em seu perfil!
                     """.formatted(notificacao.getUsuarioNome(), notificacao.getServicoNome(), notificacao.getDataHora().toString()));
             email.setEmailPara(notificacao.getUsuarioEmail());
@@ -167,7 +168,7 @@ public class NotificacaoService {
 
     @Scheduled(fixedDelay = 60000)
     public void reenviar() {
-        List<Notificacao> pendentes = notificacaoRepository.findByStatusInAndTentativasLessThan(List.of(Status.PENDENTE, Status.FALHOU), 5);
+        List<Notificacao> pendentes = notificacaoRepository.findByStatusInAndTentativasLessThan(List.of(StatusNotificacao.PENDENTE, StatusNotificacao.FALHOU), 5);
 
         pendentes.forEach(n ->
                 {

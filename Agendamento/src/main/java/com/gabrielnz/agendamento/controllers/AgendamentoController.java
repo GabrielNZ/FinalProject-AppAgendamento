@@ -32,11 +32,27 @@ public class AgendamentoController {
     }
     @PutMapping
     public ResponseEntity<Agendamento> atualizarAgendamento(@RequestBody Agendamento agendamento){
-        return ResponseEntity.ok().body(agendamentoServices.salvarAgendamento(agendamento));
+        return ResponseEntity.ok().body(agendamentoServices.updateAgendamento(agendamento));
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarAgendamento(@PathVariable Long id) {
         agendamentoServices.deletarCancelarAgendamento(id);
         return ResponseEntity.noContent().build();
+    }
+    @PutMapping("/aprovar/{id}")
+    public ResponseEntity<Agendamento> aprovarAgendamento(@RequestParam Long id){
+        return ResponseEntity.ok().body(agendamentoServices.aprovarAgendamento(id));
+    }
+    @PutMapping("/recusar/{id}")
+    public ResponseEntity<Agendamento> recusarAgendamento(@RequestParam Long id){
+        return ResponseEntity.ok().body(agendamentoServices.recusarCancelarAgendamento(id));
+    }
+    @PutMapping("/cancelar/{id}")
+    public ResponseEntity<Agendamento> cancelarAgendamento(@RequestParam Long id){
+        return ResponseEntity.ok().body(agendamentoServices.recusarCancelarAgendamento(id));
+    }
+    @PutMapping("/faltou/{id}")
+    public ResponseEntity<Agendamento> confirmarFalta(@PathVariable Long id){
+        return ResponseEntity.ok().body(agendamentoServices.confirmarFalta(id));
     }
 }

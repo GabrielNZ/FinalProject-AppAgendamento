@@ -1,4 +1,4 @@
-package com.gabrielnz.agendamento.feignclient.dtos;
+package com.gabrielnz.agendamento.entities.dtos;
 
 import jakarta.validation.constraints.NotNull;
 

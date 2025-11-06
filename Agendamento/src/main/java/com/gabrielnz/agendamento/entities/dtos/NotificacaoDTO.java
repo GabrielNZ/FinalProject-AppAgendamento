@@ -1,5 +1,8 @@
-package com.gabrielnz.agendamento.entities;
+package com.gabrielnz.agendamento.entities.dtos;
 
+import com.gabrielnz.agendamento.entities.Status;
+import com.gabrielnz.agendamento.entities.StatusNotificacao;
+import com.gabrielnz.agendamento.entities.TipoDeNotificacao;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Email;
@@ -16,7 +19,7 @@ public class NotificacaoDTO {
     private String usuarioEmail;
     private LocalDateTime dataHora;
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private StatusNotificacao status;
     @Enumerated(EnumType.STRING)
     private TipoDeNotificacao tipoDeNotificacao;
     private Integer tentativas;
@@ -62,11 +65,11 @@ public class NotificacaoDTO {
         this.dataHora = dataHora;
     }
 
-    public Status getStatus() {
+    public StatusNotificacao getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(StatusNotificacao status) {
         this.status = status;
     }
 

@@ -1,5 +1,5 @@
 package com.gabrielnz.notificacao.entities;
 
-public enum Status {
+public enum StatusNotificacao {
     PENDENTE, ENVIADO, FALHOU
 }

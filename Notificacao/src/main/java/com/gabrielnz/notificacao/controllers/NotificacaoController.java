@@ -1,7 +1,7 @@
 package com.gabrielnz.notificacao.controllers;
 
 import com.gabrielnz.notificacao.entities.Notificacao;
-import com.gabrielnz.notificacao.entities.Status;
+import com.gabrielnz.notificacao.entities.StatusNotificacao;
 import com.gabrielnz.notificacao.services.NotificacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +30,7 @@ public class NotificacaoController {
     }
 
     @GetMapping("/status/{status}")
-    public ResponseEntity<List<Notificacao>> getByStatus(@PathVariable Status status) {
+    public ResponseEntity<List<Notificacao>> getByStatus(@PathVariable StatusNotificacao status) {
         return ResponseEntity.ok(notificacaoService.getByStatus(status));
     }
 

@@ -1,7 +1,7 @@
 package com.gabrielnz.agendamento.feignclient;
 
-import com.gabrielnz.agendamento.feignclient.dtos.AgendamentoDataDTO;
-import com.gabrielnz.agendamento.feignclient.dtos.DisponibilidadeDTO;
+import com.gabrielnz.agendamento.entities.dtos.AgendamentoDataDTO;
+import com.gabrielnz.agendamento.entities.dtos.DisponibilidadeDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
