@@ -19,8 +19,8 @@ public class NotificacaoDTO {
     private Status status;
     @Enumerated(EnumType.STRING)
     private TipoDeNotificacao tipoDeNotificacao;
-
-    private int tentativas;
+    private Integer tentativas;
+    //tentativas de reenviar, para evitar sobrecarga em notificações que nao enviam de jeito nenhum
 
     public Long getId() {
         return id;
@@ -94,11 +94,11 @@ public class NotificacaoDTO {
         this.usuarioNome = usuarioNome;
     }
 
-    public int getTentativas() {
+    public Integer getTentativas() {
         return tentativas;
     }
 
-    public void setTentativas(int tentativas) {
+    public void setTentativas(Integer tentativas) {
         this.tentativas = tentativas;
     }
 }

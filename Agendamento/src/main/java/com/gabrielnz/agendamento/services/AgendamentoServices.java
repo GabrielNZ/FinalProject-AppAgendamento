@@ -64,7 +64,7 @@ public class AgendamentoServices {
     public Agendamento updateAgendamento(Agendamento agendamento) {
         AgendamentoDataDTO agendamentoInfo = agendamentoParaDTO(agendamento);
         if (agendamento.getStatus() == Status.CONCLUIDO) {
-            throw new AgendamentoException("Esse agendamento ja foi concluido...");
+            throw new AgendamentoException("Esse agendamento ja foi concluido.");
         } else if (agendamento.getStatus() == Status.AGENDADO) {
             if (disponibilidadeOcupadaFeingClient.estaDisponivel(agendamentoInfo).getBody()) {
                 agendamento.setStatus(Status.PENDENTE);
@@ -84,9 +84,18 @@ public class AgendamentoServices {
             }
         } else if(agendamento.getStatus() == Status.CANCELADO) {
             throw new AgendamentoException("Nada foi alterado, o agendamento ja esta cancelado.");
-        } else {
+        } else if(agendamento.getStatus() == Status.RECUSADO){
             throw new AgendamentoException("Nada foi alterado, este agendamento foi recusado. Crie um novo agendamento.");
+        } else {
+            throw new AgendamentoException("Nada foi alterado, ja passou da data, e o cliente faltou.");
         }
+    }
+    public Agendamento concluirAgendamento(Agendamento agendamento) {
+        agendamento.setStatus(Status.CONCLUIDO);
+        AgendamentoDataDTO agendamentoInfo = agendamentoParaDTO(agendamento);
+        disponibilidadeOcupadaFeingClient.deletarDisponibilidade(agendamento.getDisponibilidadeOcupadaId());
+        agendamento.setDisponibilidadeOcupadaId(null);
+        return agendamentoRepository.save(agendamento);
     }
     @Transactional
     public void deletarCancelarAgendamento(Long id) {
@@ -101,7 +110,7 @@ public class AgendamentoServices {
                 agendamentoRepository.save(agendamento);
             }
         }else{
-            throw new AgendamentoException("Agendamento não encontrado ou nao pode ser deletado");
+            throw new AgendamentoException("Agendamento não encontrado ou não pode ser deletado");
         }
     }
     // colocar Security para garantir que quem chama o metodo é o prestador do servido do agendamento
@@ -116,14 +125,16 @@ public class AgendamentoServices {
                 //notificar o cliente com RabbitMQ e mensageria, porem o projeto ainda nao foi criado
                 return agendamentoRepository.save(agendamento);
             } else {
-                throw new AgendamentoException("Disponibilidade ocupada, a data desse agendamento esta sendo ocupada por outro ja aprovado");
+                throw new AgendamentoException("Disponibilidade ocupada, a data deste agendamento esta sendo ocupada por outro ja aprovado");
             }
         }else if(agendamento.getStatus() == Status.AGENDADO) {
-            throw new AgendamentoException("O agendamento ja foi agendado");
+            throw new AgendamentoException("O agendamento ja foi aprovado");
         }else if(agendamento.getStatus() == Status.CONCLUIDO) {
             throw new AgendamentoException("O agendamento ja foi concluido");
-        }else {
+        }else if(agendamento.getStatus() == Status.CANCELADO) {
             throw new AgendamentoException("Impossivel aprovar agendamento, o mesmo ja foi cancelado");
+        }else{
+            throw new AgendamentoException("Impossivel aprovar, ja passou da data e o cliente faltou.");
         }
     }
     // colocar Security para garantir que quem chama o metodo é o prestador do servido do agendamento
@@ -141,8 +152,10 @@ public class AgendamentoServices {
             return agendamentoRepository.save(agendamento);
         }else if(agendamento.getStatus() == Status.CONCLUIDO) {
             throw new AgendamentoException("O agendamento ja foi concluido");
-        }else {
+        }else if(agendamento.getStatus() == Status.CANCELADO){
             throw new AgendamentoException("O agendamento ja foi cancelado");
+        }else{
+            throw new AgendamentoException("Impossivel recusar, ja passou da data e o cliente faltou.");
         }
     }
     public AgendamentoDataDTO agendamentoParaDTO(Agendamento agendamento) {
@@ -152,5 +165,17 @@ public class AgendamentoServices {
         agendamentoInfo.setDataHoraFim(agendamento.getDataHora().plusMinutes(servico.duracaoMinutos()));
         agendamentoInfo.setPrestadorId(agendamento.getPrestadorId());
         return agendamentoInfo;
+    }
+
+    public Agendamento confirmarPresenca(Agendamento agendamento) {
+        return agendamentoRepository.save(agendamento);
+        // precisa implementar
+        // mensageria via RabbitMQ
+    }
+
+    public Agendamento confirmarFalta(Agendamento agendamento) {
+        return agendamentoRepository.save(agendamento);
+        // precisa implementar
+        // mensageria via RabbitMQ
     }
 }

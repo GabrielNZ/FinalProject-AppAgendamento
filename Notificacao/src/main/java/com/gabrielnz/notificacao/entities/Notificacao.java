@@ -11,17 +11,21 @@ public class Notificacao {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long agendamentoId;
+    @Transient
     private String servicoNome;
     private Long usuarioId;
+    @Transient
     private String usuarioNome;
     @Email
     private String usuarioEmail;
+    @Email
+    private String prestadorEmail;
     private LocalDateTime dataHora;
     @Enumerated(EnumType.STRING)
     private Status status;
     @Enumerated(EnumType.STRING)
     private TipoDeNotificacao tipoDeNotificacao;
-    private Integer Tentativas;
+    private Integer tentativas; //tentativas de reenviar, para evitar sobrecarga em notificações que nao enviam de jeito nenhum
 
     public Long getId() {
         return id;
@@ -32,15 +36,23 @@ public class Notificacao {
     }
 
     public Integer getTentativas() {
-        return Tentativas;
+        return tentativas;
     }
 
     public void setTentativas(Integer tentativas) {
-        Tentativas = tentativas;
+        tentativas = tentativas;
     }
 
     public Long getAgendamentoId() {
         return agendamentoId;
+    }
+
+    public @Email String getPrestadorEmail() {
+        return prestadorEmail;
+    }
+
+    public void setPrestadorEmail(@Email String prestadorEmail) {
+        this.prestadorEmail = prestadorEmail;
     }
 
     public void setAgendamentoId(Long agendamentoId) {

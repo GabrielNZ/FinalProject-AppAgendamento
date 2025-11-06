@@ -17,6 +17,7 @@ public class Usuario{
     private String senha;
     @Enumerated(EnumType.STRING)
     private Tipo tipo;
+    private Long faltas;
 
     public Long getId() {
         return Id;
@@ -56,6 +57,14 @@ public class Usuario{
 
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
+    }
+
+    public Long getFaltas() {
+        return faltas;
+    }
+
+    public void setFaltas(Long faltas) {
+        this.faltas = faltas;
     }
 
     @Override
