@@ -40,15 +40,15 @@ public class AgendamentoController {
         return ResponseEntity.noContent().build();
     }
     @PutMapping("/aprovar/{id}")
-    public ResponseEntity<Agendamento> aprovarAgendamento(@RequestParam Long id){
+    public ResponseEntity<Agendamento> aprovarAgendamento(@PathVariable Long id){
         return ResponseEntity.ok().body(agendamentoServices.aprovarAgendamento(id));
     }
     @PutMapping("/recusar/{id}")
-    public ResponseEntity<Agendamento> recusarAgendamento(@RequestParam Long id){
+    public ResponseEntity<Agendamento> recusarAgendamento(@PathVariable Long id){
         return ResponseEntity.ok().body(agendamentoServices.recusarCancelarAgendamento(id));
     }
     @PutMapping("/cancelar/{id}")
-    public ResponseEntity<Agendamento> cancelarAgendamento(@RequestParam Long id){
+    public ResponseEntity<Agendamento> cancelarAgendamento(@PathVariable Long id){
         return ResponseEntity.ok().body(agendamentoServices.recusarCancelarAgendamento(id));
     }
     @PutMapping("/faltou/{id}")

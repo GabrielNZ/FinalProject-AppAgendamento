@@ -18,9 +18,9 @@ public class NotificacaoProducer {
 
     public void enviarNotificacao(NotificacaoDTO notificacao) {
         try{
-            log.info("Enviando requisição de notificação do tipo: {}",notificacao.getTipoDeNotificacao());
+            log.info("Enviando requisicao de notificacao do tipo: {}",notificacao.getTipoDeNotificacao());
             rabbitTemplate.convertAndSend("", queueEmail, notificacao);
-            log.info("Notificação enviada para a fila. Tipo: {}",notificacao.getTipoDeNotificacao());
+            log.info("Notificacao enviada para a fila. Tipo: {}",notificacao.getTipoDeNotificacao());
         }catch (Exception e){
             log.error("Erro ao enviar mensagem para a fila: {}",e.getMessage());
         }

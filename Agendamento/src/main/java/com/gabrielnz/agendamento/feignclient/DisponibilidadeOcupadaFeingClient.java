@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @Component
 @FeignClient(name = "DisponibilidadeOcupada", path = "/disponibilidades")
 public interface DisponibilidadeOcupadaFeingClient {
-    @GetMapping
+    @PostMapping("/disponivel")
     ResponseEntity<Boolean> estaDisponivel(@RequestBody AgendamentoDataDTO agendamentoData);
 
     @PostMapping

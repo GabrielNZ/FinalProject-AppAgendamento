@@ -1,20 +1,17 @@
 package com.gabrielnz.notificacao.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Email;
 
 import java.time.LocalDateTime;
 
-@Entity
-public class Notificacao {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class NotificacaoDTO {
     private Long id;
     private Long agendamentoId;
-    @Transient
     private String servicoNome;
     private Long usuarioId;
-    @Transient
     private String usuarioNome;
     @Email
     private String usuarioEmail;
@@ -24,9 +21,11 @@ public class Notificacao {
     @Enumerated(EnumType.STRING)
     private StatusNotificacao status;
     @Enumerated(EnumType.STRING)
+    @Column(length = 50)
     private TipoDeNotificacao tipoDeNotificacao;
     private LocalDateTime dataHoraAgendamento;
-    private Integer tentativas; //tentativas de reenviar, para evitar sobrecarga em notificações que nao enviam de jeito nenhum
+    private Integer tentativas;
+    //tentativas de reenviar, para evitar sobrecarga em notificações que nao enviam de jeito nenhum
 
     public Long getId() {
         return id;
@@ -36,24 +35,8 @@ public class Notificacao {
         this.id = id;
     }
 
-    public Integer getTentativas() {
-        return tentativas;
-    }
-
-    public void setTentativas(Integer tentativas) {
-        this.tentativas = tentativas;
-    }
-
     public Long getAgendamentoId() {
         return agendamentoId;
-    }
-
-    public @Email String getPrestadorEmail() {
-        return prestadorEmail;
-    }
-
-    public void setPrestadorEmail(@Email String prestadorEmail) {
-        this.prestadorEmail = prestadorEmail;
     }
 
     public void setAgendamentoId(Long agendamentoId) {
@@ -116,6 +99,22 @@ public class Notificacao {
         this.usuarioNome = usuarioNome;
     }
 
+    public Integer getTentativas() {
+        return tentativas;
+    }
+
+    public void setTentativas(Integer tentativas) {
+        this.tentativas = tentativas;
+    }
+
+    public @Email String getPrestadorEmail() {
+        return prestadorEmail;
+    }
+
+    public void setPrestadorEmail(@Email String prestadorEmail) {
+        this.prestadorEmail = prestadorEmail;
+    }
+
     public LocalDateTime getDataHoraAgendamento() {
         return dataHoraAgendamento;
     }
@@ -124,3 +123,5 @@ public class Notificacao {
         this.dataHoraAgendamento = dataHoraAgendamento;
     }
 }
+
+

@@ -1,6 +1,6 @@
 package com.gabrielnz.notificacao.consumers;
 
-import com.gabrielnz.notificacao.entities.Notificacao;
+import com.gabrielnz.notificacao.entities.NotificacaoDTO;
 import com.gabrielnz.notificacao.services.NotificacaoService;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ public class NotificacaoConsumer {
     NotificacaoService notificacaoService;
 
     @RabbitListener(queues = "${broker.queue.email.name}")
-    public void emailQueue(@Payload Notificacao notificacao) {
+    public void emailQueue(@Payload NotificacaoDTO notificacao) {
         notificacaoService.enviarEmail(notificacao);
     }
 }

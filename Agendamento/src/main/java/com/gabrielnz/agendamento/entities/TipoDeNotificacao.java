@@ -2,6 +2,7 @@ package com.gabrielnz.agendamento.entities;
 
 public enum TipoDeNotificacao {
     AGENDAMENTO_PENDENTE,
+    AGENDAMENTO_PENDENTE_PRESTADOR,
     AGENDAMENTO_PENDENTE_ATUALIZADO,
     AGENDAMENTO_AGENDADO_ATUALIZADO,
     AGENDAMENTO_APROVADO,

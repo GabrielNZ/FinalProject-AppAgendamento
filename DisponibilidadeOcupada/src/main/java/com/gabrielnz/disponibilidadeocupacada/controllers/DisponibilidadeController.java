@@ -19,7 +19,7 @@ public class DisponibilidadeController {
     public ResponseEntity<List<DisponibilidadeOcupada>> getPorPrestadorId(@PathVariable Long id){
         return ResponseEntity.ok().body(disponibilidadeService.getDisponibilidadesPorId(id));
     }
-    @GetMapping
+    @PostMapping("/disponivel")
     public ResponseEntity<Boolean> estaDisponivel(@RequestBody AgendamentoDataDTO agendamentoData){
         return ResponseEntity.ok().body(disponibilidadeService.estaDisponivel(agendamentoData));
     }

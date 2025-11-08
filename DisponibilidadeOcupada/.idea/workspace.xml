@@ -5,16 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39a0229b-060e-4b99-979a-23f61dd73edc" name="Changes" comment="Created: DisponibilidadeOcupada project. Changes on Agendamento project and Syntax error fixed.">
-      <change beforePath="$PROJECT_DIR$/../DisponibilidadeOcupacada/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DisponibilidadeOcupacada/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DisponibilidadeOcupacada/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DisponibilidadeOcupacada/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DisponibilidadeOcupacada/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DisponibilidadeOcupacada/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DisponibilidadeOcupacada/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/config/JacksonConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/config/RabbitMQConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Gateway/src/main/java/com/gabrielnz/gateway/config/CorsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Notificacao/src/main/java/com/gabrielnz/notificacao/entities/NotificacaoDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Notificacao/src/main/java/com/gabrielnz/notificacao/infra/configs/JacksonConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Agendamento/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Agendamento/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/config/AppConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/controllers/AgendamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/controllers/AgendamentoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/entities/TipoDeNotificacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/entities/TipoDeNotificacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/entities/dtos/NotificacaoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/entities/dtos/NotificacaoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/feignclient/DisponibilidadeOcupadaFeingClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/feignclient/DisponibilidadeOcupadaFeingClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/producer/NotificacaoProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/producer/NotificacaoProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/services/AgendamentoServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/services/AgendamentoServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Agendamento/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Agendamento/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DisponibilidadeOcupacada/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gabrielnz/disponibilidadeocupacada/controllers/DisponibilidadeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gabrielnz/disponibilidadeocupacada/controllers/DisponibilidadeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gabrielnz/disponibilidadeocupacada/entities/DisponibilidadeOcupada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gabrielnz/disponibilidadeocupacada/entities/DisponibilidadeOcupada.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gabrielnz/disponibilidadeocupacada/services/DisponibilidadeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gabrielnz/disponibilidadeocupacada/services/DisponibilidadeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Notificacao/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Notificacao/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Servicos/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Servicos/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Gateway/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Notificacao/src/main/java/com/gabrielnz/notificacao/consumers/NotificacaoConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Notificacao/src/main/java/com/gabrielnz/notificacao/consumers/NotificacaoConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Notificacao/src/main/java/com/gabrielnz/notificacao/controllers/NotificacaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Notificacao/src/main/java/com/gabrielnz/notificacao/controllers/NotificacaoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Notificacao/src/main/java/com/gabrielnz/notificacao/entities/Notificacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Notificacao/src/main/java/com/gabrielnz/notificacao/entities/Notificacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Notificacao/src/main/java/com/gabrielnz/notificacao/entities/TipoDeNotificacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Notificacao/src/main/java/com/gabrielnz/notificacao/entities/TipoDeNotificacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Notificacao/src/main/java/com/gabrielnz/notificacao/infra/configs/RabbitMQConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Notificacao/src/main/java/com/gabrielnz/notificacao/infra/configs/RabbitMQConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Notificacao/src/main/java/com/gabrielnz/notificacao/services/NotificacaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Notificacao/src/main/java/com/gabrielnz/notificacao/services/NotificacaoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servicos/src/main/java/com/gabrielnz/servicos/controllers/ServicosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servicos/src/main/java/com/gabrielnz/servicos/controllers/ServicosController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +81,12 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.DisponibilidadeOcupacadaApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/gabri/IdeaProjects/angendador_projetofinal/DisponibilidadeOcupada&quot;,
@@ -115,6 +139,9 @@
       <workItem from="1762358258571" duration="219000" />
       <workItem from="1762358506072" duration="5000" />
       <workItem from="1762360011554" duration="250000" />
+      <workItem from="1762546951748" duration="3723000" />
+      <workItem from="1762613463145" duration="3457000" />
+      <workItem from="1762618516319" duration="2034000" />
     </task>
     <task id="LOCAL-00001" summary="Created: DisponibilidadeOcupada project. Changes on Agendamento project and Syntax error fixed.">
       <option name="closed" value="true" />

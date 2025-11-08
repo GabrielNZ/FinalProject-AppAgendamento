@@ -11,6 +11,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Slf4j
@@ -20,6 +21,8 @@ public class NotificacaoService {
     private NotificacaoRepository notificacaoRepository;
     @Autowired
     JavaMailSender mailSender;
+
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
     public Notificacao getPorId(Long id) {
         return notificacaoRepository.findById(id).orElseThrow(() -> new NotificacaoException("Notificação não encontrada"));
@@ -45,7 +48,8 @@ public class NotificacaoService {
         }
     }
 
-    public void enviarEmail(Notificacao notificacao) {
+    public void enviarEmail(NotificacaoDTO notificacodto) {
+        Notificacao notificacao = dtoParaNotificacao(notificacodto);
         try {
             SimpleMailMessage mailMessage = new SimpleMailMessage();
             EmailDTO emailDTO = conteudoEmail(notificacao);
@@ -55,6 +59,7 @@ public class NotificacaoService {
             log.info("Tentando enviar e-mail para {}", notificacao.getUsuarioEmail());
             mailSender.send(mailMessage);
             notificacao.setStatus(StatusNotificacao.ENVIADO);
+            log.info("Enviado com sucesso para o e-mail: {}", notificacao.getUsuarioEmail());
             notificacaoRepository.save(notificacao);
         } catch (MailException e) {
             notificacao.setStatus(StatusNotificacao.FALHOU);
@@ -62,6 +67,7 @@ public class NotificacaoService {
             notificacaoRepository.save(notificacao);
         }
     }
+
 
     public EmailDTO conteudoEmail(Notificacao notificacao) {
         EmailDTO email = new EmailDTO();
@@ -71,21 +77,39 @@ public class NotificacaoService {
                     Olá, %s!
                     
                     Seu agendamento de %s foi aprovado com sucesso ✅
-                    Data/Horário: %s
+                    Data/Horário Criação: %s
+                    Data/Horario Agendamento: %s
                     
                     Até mais!
-                    """.formatted(notificacao.getUsuarioNome(), notificacao.getServicoNome(), notificacao.getDataHora().toString()));
+                    """.formatted(notificacao.getUsuarioNome(), notificacao.getServicoNome(), notificacao.getDataHora().format(formatter), notificacao.getDataHoraAgendamento().format(formatter)));
             email.setEmailPara(notificacao.getUsuarioEmail());
+        } else if (notificacao.getTipoDeNotificacao().equals(TipoDeNotificacao.AGENDAMENTO_PENDENTE_PRESTADOR)) {
+            email.setSubject("✅ Novo Agendamento Pendende de Confirmação");
+            email.setText("""
+                    Olá!
+                    
+                    Você tem um novo agendamento aguardando sua confirmação.
+                    
+                    👤 Cliente: %s
+                    🏢 Serviço: %s
+                    📅 Data/Hora: %s
+                    🔢 Id do agendamento: %s
+                    
+                    Por favor, confirme ou recuse o agendamento no sistema.
+                    
+                    Obrigado!
+                    """.formatted(notificacao.getUsuarioNome(), notificacao.getServicoNome(), notificacao.getDataHoraAgendamento().format(formatter), notificacao.getAgendamentoId()));
+            email.setEmailPara(notificacao.getPrestadorEmail());
         } else if (notificacao.getTipoDeNotificacao().equals(TipoDeNotificacao.AGENDAMENTO_RECUSADO)) {
             email.setSubject("❌ Seu agendamento foi recusado");
             email.setText("""
                     Olá, %s.
                     
-                    Infelizmente seu agendamento de %s foi recusado. 
+                    Infelizmente seu agendamento de %s foi recusado.
                     Você pode tentar reagendar em outro horário ✅
                     
                     Data/Horário solicitado: %s
-                    """.formatted(notificacao.getUsuarioNome(), notificacao.getServicoNome(), notificacao.getDataHora().toString()));
+                    """.formatted(notificacao.getUsuarioNome(), notificacao.getServicoNome(), notificacao.getDataHoraAgendamento().format(formatter)));
             email.setEmailPara(notificacao.getUsuarioEmail());
         } else if (notificacao.getTipoDeNotificacao().equals(TipoDeNotificacao.AGENDAMENTO_AGENDADO_CANCELADO)) {
             email.setSubject("⚠️ Seu agendamento foi cancelado");
@@ -96,7 +120,7 @@ public class NotificacaoService {
                     Se desejar, estamos aqui para remarcar ✅
                     
                     Data/Horário original: %s
-                    """.formatted(notificacao.getUsuarioNome(), notificacao.getServicoNome(), notificacao.getDataHora().toString()));
+                    """.formatted(notificacao.getUsuarioNome(), notificacao.getServicoNome(), notificacao.getDataHoraAgendamento().format(formatter)));
             email.setEmailPara(notificacao.getUsuarioEmail());
         } else if (notificacao.getTipoDeNotificacao().equals(TipoDeNotificacao.AGENDAMENTO_AGENDADO_ATUALIZADO)) {
             email.setSubject("✏️ Seu agendamento foi atualizado!");
@@ -109,7 +133,7 @@ public class NotificacaoService {
                     Novo horário: %s
                     
                     Obrigado por usar nosso serviço!
-                    """.formatted(notificacao.getUsuarioNome(), notificacao.getServicoNome(), notificacao.getDataHora().toString()));
+                    """.formatted(notificacao.getUsuarioNome(), notificacao.getServicoNome(), notificacao.getDataHoraAgendamento().format(formatter)));
             email.setEmailPara(notificacao.getUsuarioEmail());
         } else if (notificacao.getTipoDeNotificacao().equals(TipoDeNotificacao.AGENDAMENTO_PENDENTE)) {
             email.setSubject("⏳ Seu agendamento está pendente");
@@ -119,8 +143,9 @@ public class NotificacaoService {
                     Seu agendamento foi criado e está aguardando confirmação do prestador ✅
                     
                     Serviço: %s
-                    Data/Horário: %s
-                    """.formatted(notificacao.getUsuarioNome(), notificacao.getServicoNome(), notificacao.getDataHora().toString()));
+                    Data/Horário Criação: %s
+                    Data/Horário Agendamento: %s
+                    """.formatted(notificacao.getUsuarioNome(), notificacao.getServicoNome(), notificacao.getDataHora().format(formatter), notificacao.getDataHoraAgendamento().format(formatter)));
             email.setEmailPara(notificacao.getUsuarioEmail());
         } else if (notificacao.getTipoDeNotificacao().equals(TipoDeNotificacao.CONFIRMAR_PRESENCA)) {
             email.setSubject("📌 Confirme a presença do cliente");
@@ -135,7 +160,7 @@ public class NotificacaoService {
                     Data/Horário: %s
                     
                     Confirme a presença no sistema para finalizar o atendimento.
-                    """.formatted(notificacao.getUsuarioNome(), notificacao.getServicoNome(), notificacao.getDataHora().toString()));
+                    """.formatted(notificacao.getUsuarioNome(), notificacao.getServicoNome(), notificacao.getDataHoraAgendamento().format(formatter)));
             email.setEmailPara(notificacao.getPrestadorEmail());
         } else if (notificacao.getTipoDeNotificacao().equals(TipoDeNotificacao.AVISAR_FALTA)) {
             email.setSubject("⚠️ Você não compareceu ao seu agendamento");
@@ -148,7 +173,7 @@ public class NotificacaoService {
                     
                     Caso isso seja um engano entre em contato com nosso suporte!
                     Porem esteja ciente que não ter avisado previamente registra uma falta em seu perfil!
-                    """.formatted(notificacao.getUsuarioNome(), notificacao.getServicoNome(), notificacao.getDataHora().toString()));
+                    """.formatted(notificacao.getUsuarioNome(), notificacao.getServicoNome(), notificacao.getDataHoraAgendamento().format(formatter)));
             email.setEmailPara(notificacao.getUsuarioEmail());
         } else { //AGENDAMENTO_PENDENTE_ATUALIZADO
             email.setSubject("ℹ️ Atualização de agendamento pendente");
@@ -160,7 +185,7 @@ public class NotificacaoService {
                     Novo horário: %s
                     
                     Em breve você receberá a confirmação ✅
-                    """.formatted(notificacao.getUsuarioNome(), notificacao.getServicoNome(), notificacao.getDataHora().toString()));
+                    """.formatted(notificacao.getUsuarioNome(), notificacao.getServicoNome(), notificacao.getDataHoraAgendamento().format(formatter)));
             email.setEmailPara(notificacao.getUsuarioEmail());
         }
         return email;
@@ -172,9 +197,45 @@ public class NotificacaoService {
 
         pendentes.forEach(n ->
                 {
-                    n.setTentativas(n.getTentativas() + 1);
-                    enviarEmail(n);
+                    if (n.getTentativas() <= 5) {
+                        n.setTentativas(n.getTentativas() + 1);
+                        enviarEmail(notificacaoParaDTO(n));
+                    }
                 }
         );
+    }
+
+    public Notificacao dtoParaNotificacao(NotificacaoDTO notificacao) {
+        Notificacao n = new Notificacao();
+        n.setTentativas(notificacao.getTentativas());
+        n.setServicoNome(notificacao.getServicoNome());
+        n.setDataHora(notificacao.getDataHora());
+        n.setUsuarioNome(notificacao.getUsuarioNome());
+        n.setUsuarioEmail(notificacao.getUsuarioEmail());
+        n.setAgendamentoId(notificacao.getAgendamentoId());
+        n.setPrestadorEmail(notificacao.getPrestadorEmail());
+        n.setStatus(notificacao.getStatus());
+        n.setTipoDeNotificacao(notificacao.getTipoDeNotificacao());
+        n.setId(notificacao.getId());
+        n.setUsuarioId(notificacao.getUsuarioId());
+        n.setDataHoraAgendamento(notificacao.getDataHoraAgendamento());
+        return n;
+    }
+
+    public NotificacaoDTO notificacaoParaDTO(Notificacao notificacao) {
+        NotificacaoDTO dto = new NotificacaoDTO();
+        dto.setId(notificacao.getId());
+        dto.setAgendamentoId(notificacao.getAgendamentoId());
+        dto.setServicoNome(notificacao.getServicoNome());
+        dto.setUsuarioId(notificacao.getUsuarioId());
+        dto.setUsuarioNome(notificacao.getUsuarioNome());
+        dto.setUsuarioEmail(notificacao.getUsuarioEmail());
+        dto.setPrestadorEmail(notificacao.getPrestadorEmail());
+        dto.setDataHora(notificacao.getDataHora());
+        dto.setStatus(notificacao.getStatus());
+        dto.setTipoDeNotificacao(notificacao.getTipoDeNotificacao());
+        dto.setTentativas(notificacao.getTentativas());
+        dto.setDataHoraAgendamento(notificacao.getDataHoraAgendamento());
+        return dto;
     }
 }

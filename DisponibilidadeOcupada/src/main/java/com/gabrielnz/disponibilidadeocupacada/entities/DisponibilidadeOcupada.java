@@ -9,7 +9,8 @@ import java.util.Objects;
 @Table(name = "tb_disponibilidade")
 public class DisponibilidadeOcupada {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private LocalDateTime dataHoraInicio;
     private LocalDateTime dataHoraFim;

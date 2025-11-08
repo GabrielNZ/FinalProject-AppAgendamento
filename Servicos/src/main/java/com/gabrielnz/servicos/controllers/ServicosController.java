@@ -28,7 +28,7 @@ public class ServicosController {
     }
     @PutMapping
     public ResponseEntity<Servicos> atualizarServico(@RequestBody Servicos servico){
-        return ResponseEntity.ok().body(servicosServices.salvarServico(servico));
+        return ResponseEntity.ok().body(servicosServices.updateServico(servico));
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarServico(@PathVariable Long id) {

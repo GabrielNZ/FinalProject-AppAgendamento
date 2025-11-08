@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -32,7 +33,7 @@ public class DisponibilidadeService {
 
         List<DisponibilidadeOcupada> ocupadosDoDia = disponibilidadeRepository.findAllByPrestadorIdAndDataHoraInicioBetween(dataAgendamento.getPrestadorId(), inicioDoDiaNovo, fimDoDiaNovo);
 
-        boolean existeConflito = ocupadosDoDia.stream().anyMatch(ocupada -> novoInicio.isBefore(ocupada.getDataHoraFim()) && novoFim.isAfter(ocupada.getDataHoraInicio()));
+        boolean existeConflito = ocupadosDoDia.stream().anyMatch(ocupada -> ocupada.getDataHoraInicio() != null && ocupada.getDataHoraFim() != null && novoInicio.isBefore(ocupada.getDataHoraFim()) && novoFim.isAfter(ocupada.getDataHoraInicio()));
 
         return !existeConflito;
     }

@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -57,8 +58,10 @@ public class AgendamentoServices {
                 throw new AgendamentoException("Disponibilidade ocupada, tente outra data/horario");
             }
             agendamento.setStatus(Status.PENDENTE);
-            notificacaoProducer.enviarNotificacao(criarNotificacaoDTO(agendamento, servico, usuario, TipoDeNotificacao.AGENDAMENTO_PENDENTE));
-            return agendamentoRepository.save(agendamento);
+            Agendamento agendamentoId = agendamentoRepository.save(agendamento);
+            notificacaoProducer.enviarNotificacao(criarNotificacaoDTO(agendamentoId, servico, usuario, TipoDeNotificacao.AGENDAMENTO_PENDENTE)); // avisando o cliente
+            notificacaoProducer.enviarNotificacao(criarNotificacaoDTO(agendamentoId, servico, usuario, TipoDeNotificacao.AGENDAMENTO_PENDENTE_PRESTADOR)); // avisando o prestador
+            return agendamentoId;
         } catch (UsuarioException e) {
             throw new UsuarioException("Usuario nao econtrado");
         } catch (ServicosException e) {
@@ -99,12 +102,12 @@ public class AgendamentoServices {
         }
     }
 
-    public Agendamento concluirAgendamento(Agendamento agendamento) {
+    public void concluirAgendamento(Agendamento agendamento) {
         agendamento.setStatus(Status.CONCLUIDO);
         AgendamentoDataDTO agendamentoInfo = agendamentoParaDTO(agendamento);
         disponibilidadeOcupadaFeingClient.deletarDisponibilidade(agendamento.getDisponibilidadeOcupadaId());
         agendamento.setDisponibilidadeOcupadaId(null);
-        return agendamentoRepository.save(agendamento);
+        agendamentoRepository.save(agendamento);
     }
 
     @Transactional
@@ -200,6 +203,7 @@ public class AgendamentoServices {
 
     public NotificacaoDTO criarNotificacaoDTO(Agendamento agendamento, ServicoDTO servicoDTO, UsuarioDTO usuarioDTO, TipoDeNotificacao tipoDeNotificacao) {
         NotificacaoDTO notificacao = new NotificacaoDTO();
+        UsuarioDTO prestador = usuarioFeingClient.getPorId(servicoDTO.prestador_id()).getBody();
         notificacao.setAgendamentoId(agendamento.getId());
         notificacao.setUsuarioId(agendamento.getClienteId());
         notificacao.setUsuarioNome(usuarioDTO.getNome());
@@ -209,6 +213,8 @@ public class AgendamentoServices {
         notificacao.setDataHora(LocalDateTime.now());
         notificacao.setStatus(StatusNotificacao.PENDENTE);
         notificacao.setTentativas(1);
+        notificacao.setPrestadorEmail(prestador.getEmail());
+        notificacao.setDataHoraAgendamento(agendamento.getDataHora());
         return notificacao;
     }
 }

@@ -1,28 +1,18 @@
-package com.gabrielnz.notificacao.infra.configs;
+package com.gabrielnz.agendamento.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
-import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfig {
-    @Value("${broker.queue.email.name}")
-    private String emailQueue;
-
-    @Bean
-    public Queue emailQueue() {
-        return new Queue(emailQueue, true);
-    }
     @Bean
     public Jackson2JsonMessageConverter jackson2JsonMessageConverter() {
         ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new JavaTimeModule());
+        mapper.registerModule(new JavaTimeModule()); // ✅ SUPORTE PARA LocalDateTime
         return new Jackson2JsonMessageConverter(mapper);
     }
 }
+
