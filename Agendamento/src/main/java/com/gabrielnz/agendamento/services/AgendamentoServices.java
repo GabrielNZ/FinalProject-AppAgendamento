@@ -127,7 +127,7 @@ public class AgendamentoServices {
         }
     }
 
-    // colocar Security para garantir que quem chama o metodo é o prestador do servido do agendamento
+    // colocar Security para garantir que quem chama o metodo é o prestador do servico do agendamento
     public Agendamento aprovarAgendamento(Long id) {
         Agendamento agendamento = getAgendamentoPorId(id);
         UsuarioDTO usuario = usuarioFeingClient.getPorId(agendamento.getClienteId()).getBody();

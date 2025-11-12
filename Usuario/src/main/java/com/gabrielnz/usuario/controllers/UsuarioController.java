@@ -23,19 +23,15 @@ public class UsuarioController {
     public ResponseEntity<List<Usuario>> getTodosUsuarios(){
         return ResponseEntity.ok().body(usuarioServices.getTodosUsuarios());
     }
-    @PostMapping
-    public ResponseEntity<Usuario> criarUsuario(@RequestBody Usuario usuario){
-        return ResponseEntity.ok().body(usuarioServices.salvarUsuario(usuario));
-    }
     @PutMapping
     public ResponseEntity<Usuario> atualizarUsuario(@RequestBody Usuario usuario){
-        return ResponseEntity.ok().body(usuarioServices.salvarUsuario(usuario));
+        return ResponseEntity.ok().body(usuarioServices.updateUsuario(usuario));
     }
     @PutMapping("/{id}/role")
     public ResponseEntity<Usuario> trocarRoleUsuario(@PathVariable Long id, @RequestBody Tipo tipo){
         Usuario usuario = usuarioServices.getUsuarioPorId(id);
         usuario.setTipo(tipo);
-        return ResponseEntity.ok().body(usuarioServices.salvarUsuario(usuario));
+        return ResponseEntity.ok().body(usuarioServices.updateUsuario(usuario));
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarUsuario(@PathVariable Long id) {

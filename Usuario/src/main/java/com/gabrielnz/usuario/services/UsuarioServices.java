@@ -21,10 +21,6 @@ public class UsuarioServices {
         return usuarioRepository.findAll();
     }
     @Transactional
-    public Usuario salvarUsuario(Usuario usuario) {
-        return usuarioRepository.save(usuario);
-    }
-    @Transactional
     public Usuario updateUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
