@@ -4,7 +4,6 @@ import com.gabrielnz.usuario.entities.LoginDTO;
 import com.gabrielnz.usuario.entities.Usuario;
 import com.gabrielnz.usuario.repositories.UsuarioRepository;
 import com.gabrielnz.usuario.services.TokenService;
-import jakarta.validation.constraints.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
