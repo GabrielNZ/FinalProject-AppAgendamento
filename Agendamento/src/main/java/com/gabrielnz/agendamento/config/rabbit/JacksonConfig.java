@@ -1,4 +1,4 @@
-package com.gabrielnz.agendamento.config;
+package com.gabrielnz.agendamento.config.rabbit;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

@@ -1,5 +1,6 @@
-package com.gabrielnz.gateway.security;
+package com.gabrielnz.agendamento.config.auth;
 
+import com.gabrielnz.agendamento.config.feign.TokenContext;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import jakarta.servlet.FilterChain;
@@ -28,15 +29,14 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        if (request.getRequestURI().startsWith("/auth")) {
+
+        String header = request.getHeader("Authorization");
+        if (header == null || !header.startsWith("Bearer ")) {
+            TokenContext.setToken(null);
             filterChain.doFilter(request, response);
             return;
         }
-        String header = request.getHeader("Authorization");
-        if (header == null || !header.startsWith("Bearer ")) {
-            response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
-            return;
-        }
+        TokenContext.setToken(header);
         String token = header.replace("Bearer ", "");
         try {
             Key key = new SecretKeySpec(secretKey.getBytes(StandardCharsets.UTF_8), "HmacSHA256"); // pegando a chave de acesso (mesma coisa feita no JwtService)
@@ -56,5 +56,6 @@ public class AuthenticationFilter extends OncePerRequestFilter {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
         }
         filterChain.doFilter(request, response);
+        TokenContext.clear();
     }
 }
