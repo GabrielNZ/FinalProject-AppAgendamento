@@ -4,37 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39a0229b-060e-4b99-979a-23f61dd73edc" name="Changes" comment="Created: All services with Security filters.&#10;All test have been done. Everything working well &#10;Backend implementation is complete">
-      <change afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/config/auth/AuthenticationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/config/auth/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/config/feign/FeignAuthInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/config/feign/TokenContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gabrielnz/disponibilidadeocupacada/configs/AuthenticationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gabrielnz/disponibilidadeocupacada/configs/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Notificacao/src/main/java/com/gabrielnz/notificacao/configs/AuthenticationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Notificacao/src/main/java/com/gabrielnz/notificacao/configs/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Servicos/src/main/java/com/gabrielnz/servicos/configs/AuthenticationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Servicos/src/main/java/com/gabrielnz/servicos/configs/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/configs/AuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Agendamento/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Agendamento/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/config/JacksonConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/config/rabbit/JacksonConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/config/RabbitMQConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/config/rabbit/RabbitMQConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/entities/dtos/UsuarioDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/entities/dtos/UsuarioDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Agendamento/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Agendamento/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gabrielnz/disponibilidadeocupacada/services/DisponibilidadeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gabrielnz/disponibilidadeocupacada/services/DisponibilidadeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Gateway/src/main/java/com/gabrielnz/gateway/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Gateway/src/main/java/com/gabrielnz/gateway/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Gateway/src/main/java/com/gabrielnz/gateway/security/AuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Gateway/src/main/java/com/gabrielnz/gateway/security/AuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Notificacao/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Notificacao/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Notificacao/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Notificacao/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Servicos/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Servicos/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Servicos/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Servicos/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Usuario/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Usuario/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/configs/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/configs/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/services/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/services/TokenService.java" afterDir="false" />
-    </list>
+    <list default="true" id="39a0229b-060e-4b99-979a-23f61dd73edc" name="Changes" comment="Created: All services with Security filters.&#10;All test have been done. Everything working well &#10;Backend implementation is complete" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -151,6 +121,7 @@
       <workItem from="1763385879910" duration="1566000" />
       <workItem from="1763387960518" duration="630000" />
       <workItem from="1763388697145" duration="1373000" />
+      <workItem from="1763390165426" duration="45000" />
     </task>
     <task id="LOCAL-00001" summary="Created: DisponibilidadeOcupada project. Changes on Agendamento project and Syntax error fixed.">
       <option name="closed" value="true" />
@@ -176,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762272143837</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Created: All services with Security filters.&#10;All test have been done. Everything working well &#10;Backend implementation is complete">
+      <option name="closed" value="true" />
+      <created>1763390178935</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1763390178935</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

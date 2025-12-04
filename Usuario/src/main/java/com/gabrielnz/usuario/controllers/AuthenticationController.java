@@ -6,6 +6,7 @@ import com.gabrielnz.usuario.repositories.UsuarioRepository;
 import com.gabrielnz.usuario.services.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -38,9 +39,13 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public ResponseEntity<String> autenticarUsuario(@RequestBody LoginDTO loginDTO) {
-        Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDTO.email(), loginDTO.senha()));
-        Usuario usuario = (Usuario) auth.getPrincipal();
-        String token = tokenService.criarToken(usuario);
-        return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, "Bearer " + token).body("Usuario: "+usuario.getTipo().name()+" autenticado com sucesso.");
+        try {
+            Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDTO.email(), loginDTO.senha()));
+            Usuario usuario = (Usuario) auth.getPrincipal();
+            String token = tokenService.criarToken(usuario);
+            return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, "Bearer " + token).body("Autenticado com sucesso.");
+        }catch(Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email ou senha incorreto.");
+        }
     }
 }
