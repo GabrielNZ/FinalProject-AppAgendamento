@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <div class="main-container">
+        <nav class="nav-container container">
+            <div class="titulo">
+                <h1 id="usuario-infos">{Tipo do Usuário}: {Nome do Usuário}</h1>
+                <button onclick="sair()" id="sair-btn">
+                    <svg id="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round"    stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                        </path>
+                    </svg>
+                    Sair
+                </button>
+            </div>
+            <ul class="nav">
+                <li id="inicio" class="list-item" onclick="inicioStart()">Inicio</li>
+                <li id="agendar" class="list-item" onclick="iniciarAgendarServico()">Agendar Serviço</li>
+                <li id="agendamentos-usuario" class="list-item" onclick="paginaTodosOsAgendamentos()">Meus Agendamentos</li>
+                
+            </ul>
+        </nav>
+        <div id="informations-container">
+            <div id="sugestion-container">
+                <section class="agendamento-info">
+                    <div class="container" id="novo-agendamento">
+                        <h2 id="titulo-novo-agendamento">Quer um Novo Agendamento?</h2>
+                        <p id="p-novo-agendamento">Encontre o serviço ideal e reserve seu horário em segundos.</p>
+                        <button id="agendamentobtn">Agendar Novo Serviço (🎯)</button>
+                    </div>
+                    <div class="container" id="agendamento-pendente">
+                        <h3 id="titulo-agendamento-pendente">Seus Agendamentos Pendentes</h3>
+                        <div class="agendamento-container">
+                            <div id="valor-agendamentos-pendentes">0</div>
+                            <p id="agendamentospendentes">agendamentos aguardando aprovação</p>
+                        </div>
+                        <p id="ver-agendamentos" onclick="paginaTodosOsAgendamentos()">Ver todos os Agendamentos →</p>
+                    </div>
+                </section>
+            </div>
+            <div id="agendamento-informations">
+                <section class="agendamento-lista container">
+                    <h2 id="titulo-agendamentos-futuros">Próximos Agendamentos Futuros</h2>
+                    <ul id="lista-agendamentos">
+                        <li class="li-agendamento">
+                            <div class="agendamento-box">
+                                <div style="margin: auto;">
+                                    <p class="nomeservico" style="font-size: medium; font-weight: 500;">Nenhum agendamento confirmado...</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <div class="servico-box">
+                        <div class="servico-container">
+                            <div>
+                                <h3 class="nome-novo-servico">Corte de Cabelo</h3>
+                                <p class="nome-novo-prestador">Prestador: <spam class="nome-prestador">Lucas</spam></p>
+                                <div class="container-tempo-valor">
+                                    <svg class="icon-time" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    <p class="duracao">45min</p>
+                                    <p class="valor">R$ 60,00</p>
+                                </div>
+                            </div>
+                            <div>
+                                <button class="agendar-btn">Agendar Agora</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

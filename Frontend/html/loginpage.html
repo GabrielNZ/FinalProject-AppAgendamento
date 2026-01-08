@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/auth.css">
+    <title>Document</title>
+
+</head>
+<body>
+    <main id="main-page">
+        <h1>Agendamento Fácil</h1>
+        <p id="paragrafoNotificador">Entre com suas credenciais.</p>
+        <form onsubmit="login(event)">
+            <label for="email" class="label-login">E-mail</label>
+            <input placeholder="seu.email@exemplo.com" type="email" name="email" id="email" class="input-login">
+
+            <label for="password" class="label-login">Senha</label>
+            <input placeholder="••••••••••••" type="password" name="password" id="password" class="input-login">
+
+            <input onclick="realizarlogin()" type="button" name="login" id="login" value="Entrar" class="submit-btn-login">
+        </form>
+        <a id="register-ancor" href="registerpage.html">Não tem conta? Cadastre-se</a>
+    </main>
+    <script src="/js/authscript.js"></script>
+</body>
+</html>

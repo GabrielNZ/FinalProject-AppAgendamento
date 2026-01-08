@@ -1,0 +1,311 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI';
+    background-color: #f4f7f9;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+p {
+    color: #6b7280;
+}
+.main-container {
+    max-width: 1100px; 
+    width: 100%;
+}
+.container {
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -2px #0000001a;
+}
+.nav-container {
+    padding: 24px;
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e5e7eb;
+}
+#sair-btn {
+    display: flex;
+    border: none;
+    color: #ef4444;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 0.5rem;
+    background-color: rgb(254 242 242 / var(--tw-bg-opacity, 1));
+    cursor: pointer;
+}
+#sair-btn:hover {
+    color: #a52929;
+    transition: 0.1s;
+}
+#icon {
+    width: 1rem;
+    margin-right: 3px;
+}
+.nav {
+    display: flex;
+    list-style: none;
+    padding-top: 12px;
+}
+.list-item {
+    padding: 1px 12px;
+    margin: 3px 4px;
+    color: #4b5563;
+    font-weight: 500;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.selected {
+    color: #4f46e5;
+    background-color: #e0e7ff;
+    border-radius: 0.5rem;
+}
+.hover-effect {
+    background-color: #f3f4f6;
+    border-radius: 0.5rem;
+}
+.agendamento-info {
+    display: flex;
+    margin-bottom: 32px;
+}
+#novo-agendamento {
+    margin-right: 24px;
+    width: 740px;
+    padding: 24px 24px 24px 24px;
+    text-align: center;
+}
+#titulo-novo-agendamento {
+    margin-bottom: 2px;
+}
+#agendamentobtn{
+    background-color: #10b981;
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 1.125rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.15s;
+}
+#agendamentobtn:hover {
+    background-color: #059669;
+}
+#p-novo-agendamento {
+    margin-bottom: 24px;
+}
+#agendamento-pendente {
+    flex: 1;
+    padding: 24px;
+}
+#titulo-agendamento-pendente{
+    margin-bottom: 16px;
+}
+.agendamento-container {
+    display: flex;
+    border: 1px solid #fbbf24;
+    padding: 15px 12px;
+    border-radius: 0.5rem;
+    background-color: rgb(251 191 36 / 0.1);
+    align-items: center;
+}
+#faltas-container {
+    display: inline-block;
+    border: 1px solid #fbbf24;
+    padding: 5px 2px;
+    border-radius: 0.5rem;
+    background-color: rgb(251 191 36 / 0.1);
+    align-items: center;
+
+}
+#valor-agendamentos-pendentes {
+    color: #fbbf24;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 4px;
+    margin-right: 5px;
+}
+#agendamentospendentes{
+    color: #fbbf24;
+    font-size: 0.875rem;
+}
+#ver-agendamentos{
+    color: #4f46e5;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.875rem;
+    margin-top: 16px;
+    font-size: 0.875rem;
+}
+#ver-agendamentos:hover{
+    color: #3e36ce;
+    transition: 0.1s;
+}
+.agendamento-lista {
+    padding: 24px 24px 12px 24px;
+    margin-bottom: 30px;
+}
+#titulo-agendamentos-futuros{
+    margin-bottom: 16px;
+}
+#lista-agendamentos {
+    list-style: none;
+}
+.li-agendamento {
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+    background-color: #f9fafb;
+    border-radius: 0.5rem;
+    margin-bottom: 12px;
+}
+.agendamento-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nomeservico {
+    color: #1f2937;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+.nomeprestador {
+    color: #4b5563;
+    font-size: 0.9rem;
+}
+.info-direita {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.horario {
+    color: #4f46e5;
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+.data {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+.status-agendamento {
+    margin-left: 24px;
+    padding: 6px 14px;
+    color: #10b981;
+    background-color: #10b98133;
+    font-weight: 500;
+    font-size: 1rem;
+    border-radius: 9999px;
+    line-height: 20px;
+}
+.nav-filter {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+.filtro-item {
+    font-weight: 500;
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    color: #4b5563;
+    background-color: #f3f4f6;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: 0.1s;
+}
+.filter-selected {
+    font-weight: 500;
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    color: #ffffff;
+    background-color: #4f46e5;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.hover-effect-filter {
+    background-color: #e5e7eb;
+}
+.servico-box {
+    padding: 24px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -2px #0000001a;
+    transition-duration: 200ms;
+    margin-bottom: 16px;
+}
+.servico-box:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+            0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+.servico-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.container-tempo-valor {
+    display: flex;
+    margin-top: 8px;
+    align-items: center;
+}
+.valor {
+    margin-left: 16px;
+    color: #15803d;
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+}
+.icon-time {
+    color: #10b981;
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.25rem;
+    
+}
+.nome-novo-servico {
+    color: #4f46e5;
+    font-weight: 700;
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+}
+.nome-novo-prestador {
+    color: #4b5563;
+    font-size: 1.1rem;
+}
+.nome-prestador {
+    color: #4b5563;
+    font-weight: 600;
+}
+.agendar-btn {
+    color: #ffffff;
+    font-weight: 600;
+    background-color: #4f46e5;
+    border-radius: 9999px;
+    padding: 0.6rem 1.25rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition-duration: 150ms;
+}
+.agendar-btn:hover {
+    background-color: rgb(67, 56, 202);
+}

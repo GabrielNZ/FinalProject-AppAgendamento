@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/auth.css">
+    <title>Document</title>
+</head>
+<body>
+    <main id="main-page">
+        <h1>Agendamento Fácil</h1>
+        <p id="paragrafoNotificador">Entre com suas credenciais.</p>
+        <form onsubmit="login(event)">
+            <label for="nome" class="label-login">Nome de Usuário</label>
+            <input placeholder="Novo Usuário" type="text" name="nome" id="nome" class="input-login">
+
+            <label for="email" class="label-login">E-mail</label>
+            <input placeholder="seu.email@exemplo.com" type="email" name="email" id="email" class="input-login">
+
+            <label for="password" class="label-login">Senha</label>
+            <input placeholder="••••••••••••" type="password" name="password" id="password" class="input-login">
+
+            <label class="label-login">Tipo de conta:</label>
+            <div id="register-radio">
+                <input name="tipo" id="tipo_usuario" value="CLIENTE" type="radio">
+                <label id="radio" for="tipo_usuario">Usuário Comum</label>
+
+                <input name="tipo" id="tipo_prestador" value="PRESTADOR" type="radio">
+                <label for="tipo_prestador">Prestador</label>
+           </div>
+            <input onclick="realizarRegistro()" type="button" name="login" id="login" value="Registrar" class="submit-btn-register">
+        </form>
+        <a id="login-ancor" href="loginpage.html">Já possui uma conta? Faça login</a>
+    </main>
+    <script src="/js/authscript.js"></script>
+</body>
+</html>
