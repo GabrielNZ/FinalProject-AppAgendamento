@@ -4,12 +4,10 @@ import com.gabrielnz.usuario.entities.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.spec.SecretKeySpec;
-import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.time.Instant;
 import java.util.Date;
@@ -31,6 +29,7 @@ public class TokenService {
         return Jwts.builder()
                 .setSubject(usuario.getEmail())
                 .claim("tipo",usuario.getTipo())
+                .claim("id", usuario.getId())
                 .setIssuedAt(Date.from(Instant.now()))
                 .setExpiration(new Date(System.currentTimeMillis() + duracaoToken))
                 .signWith(getTokenAutenticado(), SignatureAlgorithm.HS256)

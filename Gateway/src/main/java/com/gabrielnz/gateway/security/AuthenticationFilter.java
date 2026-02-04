@@ -48,6 +48,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 
             request.setAttribute("usuarioEmail", claims.getSubject());
             request.setAttribute("usuarioTipo", claims.get("tipo"));
+            request.setAttribute("usuarioId", claims.get("id"));
 
             List<GrantedAuthority> authorities = new ArrayList<>();
             authorities.add(new SimpleGrantedAuthority("ROLE_" + claims.get("tipo", String.class)));

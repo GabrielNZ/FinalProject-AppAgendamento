@@ -15,7 +15,7 @@ public class Servicos {
     private Integer duracaoMinutos;
     private Double preco;
 
-    private Long prestador_id;
+    private Long prestadorId;
 
     public Long getId() {
         return id;
@@ -58,11 +58,11 @@ public class Servicos {
     }
 
     public Long getPrestador_id() {
-        return prestador_id;
+        return prestadorId;
     }
 
-    public void setPrestador_id(Long prestador_id) {
-        this.prestador_id = prestador_id;
+    public void setPrestadorId(Long prestadorId) {
+        this.prestadorId = prestadorId;
     }
 
     @Override

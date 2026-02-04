@@ -75,11 +75,17 @@ p {
     transition: 0.2s;
 }
 .selected {
+    padding: 1px 12px;
+    margin: 3px 4px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: 0.2s;
     color: #4f46e5;
     background-color: #e0e7ff;
     border-radius: 0.5rem;
 }
-.hover-effect {
+.list-item:hover {
     background-color: #f3f4f6;
     border-radius: 0.5rem;
 }
@@ -135,7 +141,6 @@ p {
     border-radius: 0.5rem;
     background-color: rgb(251 191 36 / 0.1);
     align-items: center;
-
 }
 #valor-agendamentos-pendentes {
     color: #fbbf24;
@@ -241,7 +246,7 @@ p {
     cursor: pointer;
     transition: 0.2s;
 }
-.hover-effect-filter {
+.filtro-item:hover {
     background-color: #e5e7eb;
 }
 .servico-box {
@@ -254,8 +259,7 @@ p {
     margin-bottom: 16px;
 }
 .servico-box:hover {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
-            0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
 .servico-container {
     display: flex;
@@ -308,4 +312,730 @@ p {
 }
 .agendar-btn:hover {
     background-color: rgb(67, 56, 202);
+}
+.container-servico {
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -2px #0000001a;
+    width: fit-content;
+    display: flex;
+}
+.agendar-servico-container {
+    padding: 24px;
+}
+.valores-servico-container {
+    display: flex;
+}
+.titulo-servico {
+    margin-bottom: 10px;
+}
+.agendar-servico-valor{
+    margin-left: 6px;
+}
+.voltar-agendar-servico {
+    color: #4f46e5;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1rem;
+}
+.voltar-agendar-servico:hover {
+    text-decoration: underline;
+}
+#desc-p{
+    font-size: 0.75rem;
+}
+.agendar-voltar-container {
+    font-size: 100%;
+    margin-top: 16px;
+}
+.icon-seta {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.25rem;
+    color: #4f46e5;
+    margin-top: 4px;
+}
+.icon-voltar-container {
+    display: flex;
+    align-items: center;
+}
+.dias-da-semana {
+    list-style: none;
+    display: flex;
+    margin-bottom: 10px;
+}
+.semana-li {
+    font-weight: 500;
+    font-size: 0.875rem;
+    cursor: pointer;
+    color: #ffffff;
+    font-weight: 500;
+    background-color: #4f46e5;
+    border-radius: 6px;
+    padding: 0.3rem 1rem;
+    border: none;
+    font-size: 1rem;
+    transition-property: background-color, transform;
+    transition-duration: 150ms;
+    margin-right: 10px;
+}
+.semana-li-selected {
+    font-weight: 500;
+    font-size: 0.875rem;
+    cursor: pointer;
+    color: #ffffff;
+    font-weight: 500;
+    background-color: #4f46e5;
+    border-radius: 6px;
+    padding: 0.175rem 0.875rem;
+    border: none;
+    font-size: 1rem;
+    margin-right: 10px;
+    border: solid 2px #1a11b9;
+}
+.semana-li-desabilitada {
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: #9CA3AF;
+    font-weight: 500;
+    border-radius: 6px;
+    padding: 0.3rem 1rem;
+    border: none;
+    font-size: 1rem;
+    margin-right: 10px;
+    background-color: #E5E7EB;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+.semana-li:hover {
+    background-color: rgb(67, 56, 202);
+}
+.semana-li:active {
+    background-color: rgb(44, 36, 136);
+}
+.horarios-btn-container {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0,1fr));
+    font-size: 100%;
+    gap: 0.75rem;
+    margin: 20px 0px;
+}
+.horarios-btn {
+    transition-duration: 150ms;
+    color: #10b981;
+    font-weight: 500;
+    font-family: inherit;
+    font-size: medium; 
+    padding: 0.75rem 1rem;
+    background-color: #ffffff;
+    border: 1px solid #10b981;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+.horarios-btn:hover {
+    color: #ffffff;
+    background-color: #10b981;
+}
+.horarios-btn:active {
+    background-color: #0d9c6d;
+}
+.horarios-btn-selected {
+    transition-duration: 150ms;
+    color: #ffffff;
+    font-weight: 500;
+    font-family: inherit;
+    font-size: medium; 
+    padding: 0.75rem 1rem;
+    background-color: #10b981;
+    border: 1px solid #10b981;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+.horarios-btn-desabilitado {
+    transition-duration: 150ms;
+    color: #9CA3AF;
+    font-weight: 500;
+    font-family: inherit;
+    font-size: medium; 
+    padding: 0.75rem 1rem;
+    background-color: #E5E7EB;
+    border: 1px solid #9CA3AF;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    cursor: not-allowed;
+}
+.p-agendamento {
+    color: #374151;
+    margin-bottom: -6px;
+}
+.container-flex-agendar-servico {
+    display: flex;
+    gap: 20px;
+}
+#confirmar-agendamento {
+    display: flex;
+    gap: 20px;
+}
+.informacoes-usuario {
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -2px #0000001a;
+    padding: 24px;
+}
+.metodo-pagamento {
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -2px #0000001a;
+}
+.resumo-reserva {
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -2px #0000001a;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    flex-grow: 0
+}
+.serviço-resumo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.prestador-resumo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.data-resumo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.horario-resumo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+#titulo-resumo {
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 1rem;
+}
+#nome-profissional {
+    font-weight: 700;
+    color: #333;
+}
+#nome-servico {
+    font-weight: 700;
+    color: #333;
+}
+#nome-data {
+    font-weight: 700;
+    color: #4f46e5;
+}
+#nome-horario {
+    font-weight: 700;
+    color: #4f46e5;
+}
+.confirmar-agendar {
+    border-top: 1px solid #e5e7eb;
+}
+.total-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+#nome-total {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+#nome-valor {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    color: #10b981;
+}
+.btn-confirmar-agendar {
+    width: 100%;
+    padding: 16px;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    cursor: pointer;
+    background-color: #10b981;
+    color: #ffffff;
+    border-radius: 0.75rem;
+    border: none;
+    margin-top: 24px;
+    margin-bottom: 16px;
+}
+.btn-confirmar-agendar:hover {
+    background-color: #059669;
+    transition-property: background-color, transform;
+    transition-duration: 0.15s;
+}
+.p-confirmar {
+    font-style: italic;
+    font-size: 10px;
+    text-align: center;
+    color: #9ca3af;
+}
+.pagamento-label {
+    display: flex;
+    padding: 12px;
+    border: 1px solid #e5e7eb;;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    margin-top: 16px;
+}
+.pagamento-label:hover {
+    background-color: #f9fafb;
+}
+.metodo-pagamento {
+    padding: 24px;
+}
+.input-radio {
+    line-height: 1rem;
+
+}
+.info-pagamento {
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+}
+.p-pagamento {
+    font-weight: 700;
+    cursor: pointer;
+    color: #333;
+    line-height: 1.5;
+
+}
+.p-info {
+    cursor: pointer;
+    color: #6b7280;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    line-height: 1rem;
+
+}
+.cartao-icon {
+    margin-right: 3px;
+    
+}
+#titulo-pagamento {
+    display: flex;
+}
+
+.info-p {
+    color: #6b7280;
+    font-size: 0.75rem;
+    margin-top: 34px;
+    
+}
+#agendamento-confirmado {
+    padding: 24px;
+    position: static;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#agendamento-confirmado-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#btn-sair{
+    max-width: 50%;
+}
+#p-agendamento-confirmado {
+    margin-top: 10px;
+}
+.info-section {
+   display: grid;
+   gap: 1.5rem;
+   margin-bottom: 32px;
+   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.info-container {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    color: #6b7280;
+    transition-duration: 200ms;
+}
+.info-container:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+.info-container-aprovados {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    color: #6b7280;
+    transition-duration: 200ms;
+}
+.p-titulo-info {
+    font-weight: 500; 
+}
+#agendamentos-pendentes {
+    border-style: solid;
+    border-width: 0px;
+    border-left-width: 4px;
+    border-radius: 0.75rem;
+    border-color: #fbbf24;
+    cursor: pointer;
+}
+#meus-servicos-container {
+    border-style: solid;
+    border-width: 0px;
+    border-left-width: 4px;
+    border-radius: 0.75rem;
+    border-color: #4f46e5;
+    cursor: pointer;
+}
+#agendamentos-aprovados {
+    border-style: solid;
+    border-width: 0px;
+    border-left-width: 4px;
+    border-radius: 0.75rem;
+    border-color: #10b981;
+}
+#info-agendamentos-pendentes {
+    color: #fbbf24;
+    font-weight: 700;
+    font-size: 1.875rem;
+}
+#info-meus-servicos-container {
+    color: #4f46e5;
+    font-weight: 700;
+    font-size: 1.875rem;
+}
+#info-agendamentos-aprovados {
+    color: #10b981;
+    font-weight: 700;
+    font-size: 1.875rem;
+}
+.meus-servicos-container{
+    padding: 24px;
+}
+#novo-servico-btn {
+    background-color: #10b981;
+    color: #ffffff;
+    border-radius: 0.5rem;
+    padding: 8px 16px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition-duration: 150ms;
+    margin-bottom: 24px;
+    font-size: 100%;
+}
+#novo-servico-btn:hover {
+    background-color: #059669;
+}
+.container-info-servicos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nome-tempo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.p-tempo {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+} 
+.p-desc {
+    color: #4b5563;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    line-height: 1rem;
+
+}
+.p-valor{
+    color: #10b981;
+    font-weight: 800;
+    font-size: 1.25rem;
+    font-family: sans-serif;
+    line-height: 1.75rem;
+    margin-top: 8px;
+}
+.editar-excluir {
+    display: flex;
+    gap: 8px;
+}
+.p-editar {
+    color: #4f46e5;
+    font-weight: 500;
+    padding: 8px;
+    cursor: pointer;
+    transition: 150ms;
+    border-radius: 0.375rem;
+}
+.p-editar:hover{
+    background-color: rgba(79, 70, 229, 0.1);
+}
+.p-excluir {
+    color: #ef4444;
+    font-weight: 500;
+    padding: 8px;
+    cursor: pointer;
+    transition: 150ms;
+    border-radius: 0.375rem;
+}
+.p-excluir:hover{
+    background-color: rgba(185, 28, 28, 0.1);
+}
+#titulo-agendamentos-recebidos{
+    color: #4b5563;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-family: sans-serif;
+    margin-bottom: 24px;
+}
+#servico-excluir-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.btn-sair-servico{
+    width: 100%;
+    padding: 16px;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    cursor: pointer;
+    background-color: #10b981;
+    color: #ffffff;
+    border-radius: 0.75rem;
+    border: none;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    transition: 200ms;
+}
+.btn-sair-servico:hover {
+    background-color: #0fa573;
+}
+.btn-excluir-servico{
+    width: 100%;
+    padding: 16px;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    cursor: pointer;
+    background-color: #ef4444;
+    color: #ffffff;
+    border-radius: 0.75rem;
+    border: none;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    transition: 200ms;
+}
+.btn-excluir-servico:hover {
+    background-color: #d33737;
+}
+#btn-excluir{
+    display: inline-block;
+    max-width: 50%;
+}
+#div-sair-excluir{
+    display: flex;
+    gap: 15px;
+}
+
+.btn-sair-servico-editado{
+    width: 100%;
+    padding: 16px;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    cursor: pointer;
+    background-color: #ef4444;
+    color: #ffffff;
+    border-radius: 0.75rem;
+    border: none;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    transition: 200ms;
+}
+.btn-sair-servico-editado:hover {
+    background-color: #d33737;
+}
+.btn-salvar-servico{
+    width: 100%;
+    padding: 16px;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    cursor: pointer;
+    background-color: #10b981;
+    color: #ffffff;
+    border-radius: 0.75rem;
+    border: none;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    transition: 200ms;
+}
+.btn-salvar-servico:hover {
+    background-color: #0fa573;
+}
+#servico-editar-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    display: flex;
+    width: 25%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+form {
+    margin-top: 10px;
+}
+.label-login{
+    color: #374151;
+}
+.input-login {
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    margin-top: 0.30rem;
+    border: 1px solid #d1d5db;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.input-login:focus {
+    outline-width: 1px;
+    outline-style: solid; 
+    outline-color: #5d56e9;
+}
+.confirmar-agendamento {
+    margin-left: 24px;
+    padding: 6px 14px;
+    color: #ffffff;
+    background-color: #10b981;
+    font-weight: 500;
+    font-size: 0.8rem;
+    border-radius: 9999px;
+    line-height: 20px;
+    transition: 200ms;
+    cursor: pointer;
+}
+.rejeitar-agendamento {
+    margin-left: 8px;
+    padding: 6px 14px;
+    color: #ffffff;
+    background-color: #ef4444;
+    font-weight: 500;
+    font-size: 0.8rem;
+    border-radius: 9999px;
+    line-height: 20px;
+    transition: 100ms;
+    cursor: pointer;
+}
+.confirmar-agendamento:hover {
+    background-color: #0f976a;
+}
+.rejeitar-agendamento:hover {
+   background-color: #d42b2b;
+}
+.cancelar-p {
+    color: #6b7280;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 24px;
+}
+.cancelar-p:hover {
+    color: #494d57;
+}
+#titulo-disponibilidade{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+#bloco-disponibilidade {
+    padding: 16px;
+    border: 1px dashed rgb(79 70 229 / 0.3);
+    border-radius: 0.5rem;
+    margin-top: 24px;
+}
+#h2-disponibilidade{
+    color: #4f46e5;
+    font-weight: 600;
+    font-size: 1.25rem;
+    font-family: sans-serif;
+}
+#disponibilidade-section{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+}
+.input-disponibilidade {
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+#submit-disponibilidade {
+    background-color: #4f46e5;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 8px;
+    transition: 150ms;
+    cursor: pointer;
+}
+#submit-disponibilidade:hover {
+    background-color: #413ac9;
+}
+#lista-disponibilidades {
+    list-style: none;
+    margin-top: 24px;
+}
+.dia-da-semana {
+    color: #1f2937;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+.disponibilidade-hora {
+    font-size: 1rem;
+    line-height: 1.25rem;
+}
+.remover {
+    color: #ef4444;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: 150ms;
+    cursor: pointer;
+}
+.remover:hover {
+    color: #b91c1c;
+    background-color: rgb(239 68 68 / 0.1);
 }

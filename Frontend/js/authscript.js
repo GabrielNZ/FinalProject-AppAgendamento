@@ -23,13 +23,17 @@ async function realizarlogin(){
             paragrafoNotificador.style.color = "#d63232ff"
             return
         }
-
+        const responseBody = await response.text()
         const token = response.headers.get("Authorization");
         localStorage.setItem('token', token)
-
-        paragrafoNotificador.textContent = await response.text()
+        paragrafoNotificador.textContent = 'Usuario logado com sucesso.'
         paragrafoNotificador.style.color = "#32d65e"
-        window.location.href = 'dashboard.html';
+        
+        if(responseBody == 'PRESTADOR') {
+            window.location.href = 'dashboardprestador.html'
+        }else {
+            window.location.href = 'dashboard.html'; 
+        }
     } catch(error){
         console.error("Houve um problema com a requisição:", error)
         paragrafoNotificador.textContent = ("Houve um problema com a requisição:", error)

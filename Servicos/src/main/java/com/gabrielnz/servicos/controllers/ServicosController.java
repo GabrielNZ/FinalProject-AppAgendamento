@@ -22,6 +22,10 @@ public class ServicosController {
     public ResponseEntity<List<Servicos>> getTodosServicos(){
         return ResponseEntity.ok().body(servicosServices.getTodosServicos());
     }
+    @GetMapping("/prestador/{prestadorId}")
+    public ResponseEntity<List<Servicos>> getTodosServicosPrestador(@PathVariable Long prestadorId){
+        return ResponseEntity.ok().body(servicosServices.getTodosServicosPrestador(prestadorId));
+    }
     @PostMapping
     public ResponseEntity<Servicos> criarServico(@RequestBody Servicos servico){
         return ResponseEntity.ok().body(servicosServices.salvarServico(servico));

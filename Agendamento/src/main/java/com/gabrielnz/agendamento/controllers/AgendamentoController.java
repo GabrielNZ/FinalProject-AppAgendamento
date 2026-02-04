@@ -26,6 +26,14 @@ public class AgendamentoController {
     public ResponseEntity<List<Agendamento>> getTodosAgendamentos(){
         return ResponseEntity.ok().body(agendamentoServices.getTodosAgendamentos());
     }
+    @GetMapping("/usuario/{clienteId}")
+    public ResponseEntity<List<Agendamento>> getTodosAgendamentosClienteId(@PathVariable Long clienteId){
+        return ResponseEntity.ok().body(agendamentoServices.getAgendamentoPorUsuarioId(clienteId));
+    }
+    @GetMapping("/prestador/{prestadorId}")
+    public ResponseEntity<List<Agendamento>> getTodosAgendamentosPrestadorId(@PathVariable Long prestadorId){
+        return ResponseEntity.ok().body(agendamentoServices.getAgendamentoPorPrestadorId(prestadorId));
+    }
     @PostMapping
     public ResponseEntity<Agendamento> criarAgendamento(@RequestBody Agendamento agendamento){
         return ResponseEntity.ok().body(agendamentoServices.salvarAgendamento(agendamento));

@@ -32,9 +32,10 @@ public class AuthenticationController {
             return ResponseEntity.badRequest().body("E-mail já registrado.");
         }
         usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
+        usuario.setFaltas(0L);
         usuarioRepository.save(usuario);
         String token = tokenService.criarToken(usuario);
-        return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, "Bearer " + token).body("Usuario: "+usuario.getTipo().name()+" registrado com sucesso.");
+        return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, "Bearer " + token).body("Usuario registrado com sucesso.");
     }
 
     @PostMapping("/login")
@@ -43,7 +44,7 @@ public class AuthenticationController {
             Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDTO.email(), loginDTO.senha()));
             Usuario usuario = (Usuario) auth.getPrincipal();
             String token = tokenService.criarToken(usuario);
-            return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, "Bearer " + token).body("Autenticado com sucesso.");
+            return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, "Bearer " + token).body(usuario.getTipo().toString());
         }catch(Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email ou senha incorreto.");
         }

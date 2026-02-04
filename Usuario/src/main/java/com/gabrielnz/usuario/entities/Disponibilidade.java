@@ -2,7 +2,7 @@ package com.gabrielnz.usuario.entities;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "tb_disponibilidade_prestador")
@@ -10,12 +10,11 @@ public class Disponibilidade {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idDisponibilidade;
-    @ManyToOne
-    @JoinColumn(name = "prestador_id")
-    private Usuario usuario;
-    private String diaDaSemana;
-    private LocalDateTime inicio;
-    private LocalDateTime fim;
+    private Long prestadorId;
+    @Enumerated(EnumType.STRING)
+    private DiaDaSemana diaDaSemana;
+    private LocalTime inicio;
+    private LocalTime  fim;
 
     public Long getIdDisponibilidade() {
         return idDisponibilidade;
@@ -25,35 +24,35 @@ public class Disponibilidade {
         this.idDisponibilidade = idDisponibilidade;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Long getPrestadorId() {
+        return prestadorId;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setPrestadorId(Long prestadorId) {
+        this.prestadorId = prestadorId;
     }
 
-    public String getDiaDaSemana() {
+    public DiaDaSemana getDiaDaSemana() {
         return diaDaSemana;
     }
 
-    public void setDiaDaSemana(String diaDaSemana) {
+    public void setDiaDaSemana(DiaDaSemana diaDaSemana) {
         this.diaDaSemana = diaDaSemana;
     }
 
-    public LocalDateTime getInicio() {
+    public LocalTime getInicio() {
         return inicio;
     }
 
-    public void setInicio(LocalDateTime inicio) {
+    public void setInicio(LocalTime inicio) {
         this.inicio = inicio;
     }
 
-    public LocalDateTime getFim() {
+    public LocalTime getFim() {
         return fim;
     }
 
-    public void setFim(LocalDateTime fim) {
+    public void setFim(LocalTime fim) {
         this.fim = fim;
     }
 }

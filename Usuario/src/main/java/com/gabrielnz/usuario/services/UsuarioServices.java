@@ -17,18 +17,21 @@ public class UsuarioServices {
     public Usuario getUsuarioPorId(Long id) {
         return usuarioRepository.findById(id).orElseThrow(() -> new UsuarioException("Usuario não encontrado"));
     }
+
     public List<Usuario> getTodosUsuarios() {
         return usuarioRepository.findAll();
     }
+
     @Transactional
     public Usuario updateUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
+
     @Transactional
     public void deletarUsuario(Long id) {
-        if(usuarioRepository.existsById(id)) {
+        if (usuarioRepository.existsById(id)) {
             usuarioRepository.deleteById(id);
-        }else{
+        } else {
             throw new UsuarioException("Usuario não encontrado");
         }
     }

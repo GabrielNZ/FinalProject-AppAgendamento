@@ -37,7 +37,12 @@ public class AgendamentoServices {
     public Agendamento getAgendamentoPorId(Long id) {
         return agendamentoRepository.findById(id).orElseThrow(() -> new AgendamentoException("Agendamento não encontrado"));
     }
-
+    public List<Agendamento> getAgendamentoPorUsuarioId(Long clienteId) {
+        return agendamentoRepository.findAllByClienteId(clienteId);
+    }
+    public List<Agendamento> getAgendamentoPorPrestadorId(Long prestadorId) {
+        return agendamentoRepository.findAllByPrestadorId(prestadorId);
+    }
     public List<Agendamento> getTodosAgendamentos() {
         return agendamentoRepository.findAll();
     }
@@ -149,6 +154,8 @@ public class AgendamentoServices {
             throw new AgendamentoException("O agendamento ja foi concluido");
         } else if (agendamento.getStatus() == Status.CANCELADO) {
             throw new AgendamentoException("Impossivel aprovar agendamento, o mesmo ja foi cancelado");
+        } else if (agendamento.getStatus() == Status.RECUSADO) {
+            throw new AgendamentoException("Impossivel aprovar agendamento, o mesmo ja foi recusado");
         } else {
             throw new AgendamentoException("Impossivel aprovar, ja passou da data e o cliente faltou.");
         }

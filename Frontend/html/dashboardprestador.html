@@ -21,37 +21,40 @@
             </div>
             <ul class="nav">
                 <li id="inicio" class="list-item" onclick="inicioStart()">Inicio</li>
-                <li id="agendar" class="list-item" onclick="iniciarAgendarServico()">Agendar Serviço</li>
-                <li id="agendamentos-usuario" class="list-item" onclick="paginaTodosOsAgendamentos()">Meus Agendamentos</li>
+                <li id="agendamentos-recebidos" class="list-item" onclick="paginaAgendamentosRecebidos()">Agendamentos Recebidos</li>
+                <li id="meus-servicos" class="list-item" onclick="paginaMeusServicos()">Meus Serviços</li>
+                <li id="disponibilidade" class="list-item" onclick="paginaDisponibilidade()">Disponibilidade</li>
                 
             </ul>
         </nav>
         <div id="informations-container">
             <div id="sugestion-container">
-                <section class="agendamento-info">
-                    <div class="container" id="novo-agendamento">
-                        <h2 id="titulo-novo-agendamento">Quer um Novo Agendamento?</h2>
-                        <p id="p-novo-agendamento">Encontre o serviço ideal e reserve seu horário em segundos.</p>
-                        <button id="agendamentobtn" onclick="iniciarAgendarServico()">Agendar Novo Serviço (🎯)</button>
+                <section class="info-section">
+                    <div onclick="paginaAgendamentosRecebidos()" class="info-container container" id="agendamentos-pendentes">
+                        <p class="p-titulo-info">Agendamentos Pendentes</p>
+                        <p id="info-agendamentos-pendentes">0</p>
+                        <p>Clique para Aprovar/Rejeitar</p>
                     </div>
-                    <div class="container" id="agendamento-pendente">
-                        <h3 id="titulo-agendamento-pendente">Seus Agendamentos Pendentes</h3>
-                        <div class="agendamento-container">
-                            <div id="valor-agendamentos-pendentes">0</div>
-                            <p id="agendamentospendentes">agendamentos aguardando aprovação</p>
-                        </div>
-                        <p id="ver-agendamentos" onclick="paginaTodosOsAgendamentos()">Ver todos os Agendamentos →</p>
+                    <div onclick="paginaMeusServicos()" class="info-container container" id="meus-servicos-container">
+                        <p class="p-titulo-info">Meus Serviços</p>
+                        <p id="info-meus-servicos-container">0</p>
+                        <p>Gerencie e edite seus serviços</p>
+                    </div>
+                    <div class="info-container-aprovados container" id="agendamentos-aprovados">
+                        <p class="p-titulo-info" id="p-titulo-info-aprovado">Agendamentos Aprovados Hoje (20/12)</p>
+                        <p id="info-agendamentos-aprovados">0</p>
+                        <p id="info-proximo-agendamento">Próximo: Nenhum</p>
                     </div>
                 </section>
             </div>
             <div id="agendamento-informations">
                 <section class="agendamento-lista container">
-                    <h2 id="titulo-agendamentos-futuros">Próximos Agendamentos Futuros</h2>
+                    <h2 id="titulo-agendamentos-futuros">Agenda de Hoje (20/12/2025)</h2>
                     <ul id="lista-agendamentos">
                         <li class="li-agendamento">
                             <div class="agendamento-box">
                                 <div style="margin: auto;">
-                                    <p class="nomeservico" style="font-size: medium; font-weight: 500;">Nenhum agendamento encontrado...</p>
+                                    <p class="nomeservico" style="font-size: medium; font-weight: 500;">Nenhum agendamento confirmado para hoje...</p>
                                 </div>
                             </div>
                         </li>
@@ -60,6 +63,6 @@
             </div>
         </div>
     </div>
-    <script src="/js/dashboard.js"></script>
+    <script src="/js/dashboardprestador.js"></script>
 </body>
 </html>

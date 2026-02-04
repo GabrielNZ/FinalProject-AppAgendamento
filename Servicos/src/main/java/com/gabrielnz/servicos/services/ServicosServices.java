@@ -20,6 +20,9 @@ public class ServicosServices {
     public List<Servicos> getTodosServicos() {
         return servicosRepository.findAll();
     }
+    public List<Servicos> getTodosServicosPrestador(Long prestadorId) {
+        return servicosRepository.findAllByPrestadorId(prestadorId);
+    }
     @Transactional
     public Servicos salvarServico(Servicos servico) {
         return servicosRepository.save(servico);
