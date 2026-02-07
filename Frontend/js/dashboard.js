@@ -72,6 +72,8 @@ async function inicializarDashboardInicio(tipoUsuario, token){
 const usuarioJson = await response.json();
 tituloInfo.textContent = tipoUsuario+": "+usuarioJson.nome
 const agendamentos = await pegarAgendamentos(token)
+const faltasNumero = document.getElementById("faltas-numero")
+faltasNumero.innerText = usuarioJson.faltas
 
 const agendamentosAgendados = agendamentos.filter(a => a.status === "AGENDADO");
 inicializarDashboardAgendamentos(agendamentosAgendados)
@@ -448,6 +450,7 @@ async function agendarUmServico(prestadorId, servicoObj, dataInicio, h, m) {
     const div = document.createElement("div")
     div.id = "confirmar-agendamento"
     div.textContent = `texto`
+    const data = dataInicio.toLocaleDateString('pt-BR');
     const html = `
 
         <form id="confirmar-agendamento">
@@ -493,7 +496,7 @@ async function agendarUmServico(prestadorId, servicoObj, dataInicio, h, m) {
                     </div>
                     <div class="data-resumo">
                         <p>Data:</p>
-                        <p id="nome-data">${dataInicio.getDate()}/${mesesNumero[dataInicio.getMonth()]}/${dataInicio.getFullYear()}</p>
+                        <p id="nome-data">${data}</p>
                     </div>
                     <div class="horario-resumo">
                         <p>Horário:</p>

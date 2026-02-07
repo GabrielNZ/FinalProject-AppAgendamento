@@ -5,30 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39a0229b-060e-4b99-979a-23f61dd73edc" name="Changes" comment="Created: All services with Security filters.&#10;All test have been done. Everything working well &#10;Backend implementation is complete">
-      <change afterPath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/entities/DiaDaSemana.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/repositories/DisponibilidadeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/services/DisponibilidadeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/controllers/AgendamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/controllers/AgendamentoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/AgendamentoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/AgendamentoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/config/feign/FeignAuthInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/config/feign/FeignAuthInterceptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/repositories/AgendamentoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/repositories/AgendamentoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/services/AgendamentoServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/services/AgendamentoServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/services/AgendamentoSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Agendamento/src/main/java/com/gabrielnz/agendamento/services/AgendamentoSchedule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/css/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/css/auth.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gabrielnz/disponibilidadeocupacada/configs/AuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gabrielnz/disponibilidadeocupacada/configs/AuthenticationFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/css/dashboard.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/html/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/html/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/js/authscript.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/js/authscript.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/js/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/js/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Gateway/src/main/java/com/gabrielnz/gateway/security/AuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Gateway/src/main/java/com/gabrielnz/gateway/security/AuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Servicos/src/main/java/com/gabrielnz/servicos/controllers/ServicosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servicos/src/main/java/com/gabrielnz/servicos/controllers/ServicosController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Servicos/src/main/java/com/gabrielnz/servicos/entities/Servicos.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servicos/src/main/java/com/gabrielnz/servicos/entities/Servicos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Servicos/src/main/java/com/gabrielnz/servicos/repositories/ServicosRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servicos/src/main/java/com/gabrielnz/servicos/repositories/ServicosRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Servicos/src/main/java/com/gabrielnz/servicos/services/ServicosServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servicos/src/main/java/com/gabrielnz/servicos/services/ServicosServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/controllers/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/controllers/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/controllers/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/entities/Disponibilidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/entities/Disponibilidade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/entities/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/entities/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/repositories/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/repositories/UsuarioRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/services/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/services/TokenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/services/UsuarioServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/services/UsuarioServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/js/dashboardprestador.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/js/dashboardprestador.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servicos/src/main/java/com/gabrielnz/servicos/configs/AuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servicos/src/main/java/com/gabrielnz/servicos/configs/AuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/configs/AuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Usuario/src/main/java/com/gabrielnz/usuario/configs/AuthenticationFilter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,6 +156,8 @@
       <workItem from="1770057854139" duration="632000" />
       <workItem from="1770129382572" duration="30000" />
       <workItem from="1770129421847" duration="1304000" />
+      <workItem from="1770305057986" duration="602000" />
+      <workItem from="1770430858334" duration="1400000" />
     </task>
     <task id="LOCAL-00001" summary="Created: DisponibilidadeOcupada project. Changes on Agendamento project and Syntax error fixed.">
       <option name="closed" value="true" />

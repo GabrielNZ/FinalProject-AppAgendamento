@@ -49,7 +49,7 @@ p {
     padding: 10px;
     margin-top: 8px;
     border-radius: 0.5rem;
-    background-color: rgb(254 242 242 / var(--tw-bg-opacity, 1));
+    background-color: rgb(254 242 242);
     cursor: pointer;
 }
 #sair-btn:hover {
@@ -1038,4 +1038,34 @@ form {
 .remover:hover {
     color: #b91c1c;
     background-color: rgb(239 68 68 / 0.1);
+}
+#contagem-faltas  {
+    position: absolute;
+    right: 28px;
+    line-height: 40px;
+    color: #fbbf24;
+    border: 1px solid #fbbf24;
+    padding: 1px 12px;
+    border-radius: 0.5rem;
+    background-color: rgb(251 191 36 / 0.1);
+}
+#faltas-numero {
+    color: #fbbf24;
+    font-weight: 700;
+    font-size: 1rem;
+}
+.confirmar-falta {
+margin-left: 8px;
+    padding: 6px 14px;
+    color: #ffffff;
+    background-color: #f97316;
+    font-weight: 500;
+    font-size: 0.8rem;
+    border-radius: 9999px;
+    line-height: 20px;
+    transition: 100ms;
+    cursor: pointer;
+}
+.confirmar-falta:hover {
+    background-color: #ce5f10;
 }

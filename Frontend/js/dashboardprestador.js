@@ -508,27 +508,43 @@ async function inicializarAgendamentosRecebidos(agendamentos){
         containerLista.innerHTML = ""
     }
     var loop = 0
+    var faltou = false
     for(const agendamento of agendamentos) {
+        const dataAgendamento = new Date(agendamento.dataHora)
+        const dataAgendamento24h = new Date(dataAgendamento.getTime() + (24 * 60 * 60 * 1000))
         const agendamentoCerto = criarAgendamento(agendamento, token)
         const agendamentoObj = await agendamentoCerto
         const config = obterConfigStatus(agendamento)
  
         let botoesAcao = '';
-
+        let faltas = '';
+        const responseCliente = await fetch('http://localhost:8765/usuarios/'+agendamento.clienteId,    {
+        method: 'GET',
+        headers: { 
+           'Content-Type': 'application/json', 'Authorization': token,
+        },
+        });
+        const cliente = await responseCliente.json();
         if (agendamento.status === 'PENDENTE') {
         botoesAcao = `
             <div class="confirmar-agendamento">Aprovar</div>
             <div class="rejeitar-agendamento">Rejeitar</div>
             `
+            faltas = `
+            | Faltas: ${cliente.faltas}
+            `
         } else if (agendamento.status === 'AGENDADO') {
             botoesAcao = `<p class="cancelar-p">Cancelar</p>`
+        } else if (agendamento.status === 'CONCLUIDO' && dataAgendamento24h > new Date()) {
+            botoesAcao = `<div class="confirmar-falta">Faltou</div>`
+            faltou = true
         }
         const liHTML = `
             <li class="li-agendamento">
                 <div class="agendamento-box">
                     <div>
                         <p class="nomeservico">${agendamentoObj.servico}</p>
-                        <p class="nomeprestador">Cliente: ${agendamentoObj.cliente}</p>
+                        <p class="nomeprestador">Cliente: ${agendamentoObj.cliente}${faltas}</p>
                     </div>
                     <div class="info-direita">
                         ${['PENDENTE', 'AGENDADO'].includes(agendamentoObj.status) ? `
@@ -560,9 +576,32 @@ async function inicializarAgendamentosRecebidos(agendamentos){
             rejeitarBtn.addEventListener('click', () => {
             cancelarAgendamento(agendamento);
             });
+        } 
+        if (agendamento.status === 'CONCLUIDO' && dataAgendamento24h > new Date() && faltou == true) {
+            console.log(loop)
+            const faltouBtn = document.querySelectorAll(`.confirmar-falta`)[loop]
+            faltouBtn.addEventListener('click', () => {
+            faltouAgendamento(agendamento);
+            });
+            faltou = false
+            loop += 1
+            continue;
+        }
+        if(agendamento.status ===`CONCLUIDO`) {
+            continue;
         }
         loop += 1
     }
+}
+async function faltouAgendamento(agendamento) {
+     const response = await fetch('http://localhost:8765/agendamentos/faltou/'+agendamento.id,    {
+        method: 'PUT',
+        headers: { 
+           'Content-Type': 'application/json', 'Authorization': token,
+        },
+    });
+    abaAgendamento = true
+    filtroOutros()
 }
 async function aprovarAgendamento(agendamento) {
     const response = await fetch('http://localhost:8765/agendamentos/aprovar/'+agendamento.id,    {
@@ -840,7 +879,11 @@ async function paginaDisponibilidade() {
             tituloInfo.style.color = "#d63232ff";
             //window.location.href = 'loginpage.html';  
         }
+        const ordemPrioridade = ["SEGUNDA", "TERCA", "QUARTA", "QUINTA", "SEXTA"];
         const listaDisponibilidades = await responseUsuario.json()
+        listaDisponibilidades.sort((a, b) => {
+            return ordemPrioridade.indexOf(a.diaDaSemana) - ordemPrioridade.indexOf(b.diaDaSemana);
+        });
         if(listaDisponibilidades.length >= 1) {
             divDisponibilidade.innerHTML = ""
             var loop = 0

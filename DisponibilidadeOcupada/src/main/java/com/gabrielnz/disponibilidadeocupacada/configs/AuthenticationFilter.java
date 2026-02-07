@@ -25,6 +25,8 @@ import java.util.List;
 public class AuthenticationFilter extends OncePerRequestFilter {
     @Value("${jwt.secret}")
     private String secretKey;
+    @Value("${api.security.internal-token}")
+    private String internalToken;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -35,6 +37,15 @@ public class AuthenticationFilter extends OncePerRequestFilter {
             return;
         }
         String token = header.replace("Bearer ", "");
+        if (token.equals(internalToken)) {
+            List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority("ROLE_PRESTADOR"));
+            UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken("SISTEMA_AGENDADOR", null, authorities);
+            SecurityContextHolder.getContext().setAuthentication(auth);
+            request.setAttribute("usuarioEmail", "sistema@agendamento.com");
+            request.setAttribute("usuarioTipo", "PRESTADOR");
+            filterChain.doFilter(request, response);
+            return;
+        }
         Key key = new SecretKeySpec(secretKey.getBytes(StandardCharsets.UTF_8), "HmacSHA256"); // pegando a chave de acesso (mesma coisa feita no JwtService)
         Claims claims = Jwts.parserBuilder()
                 .setSigningKey(key)
