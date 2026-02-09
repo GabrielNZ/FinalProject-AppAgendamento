@@ -25,13 +25,14 @@ async function realizarlogin(){
         }
         const responseBody = await response.text()
         const token = response.headers.get("Authorization");
-        localStorage.setItem('token', token)
         paragrafoNotificador.textContent = 'Usuario logado com sucesso.'
         paragrafoNotificador.style.color = "#32d65e"
         
         if(responseBody == 'PRESTADOR') {
+            localStorage.setItem('token_prestador', token)
             window.location.href = 'dashboardprestador.html'
         }else {
+             localStorage.setItem('token_usuario', token)
             window.location.href = 'dashboard.html'; 
         }
     } catch(error){
@@ -78,11 +79,17 @@ async function realizarRegistro() {
             return
         }
         const token = response.headers.get("Authorization");
-        localStorage.setItem('token', token)
 
         paragrafoNotificador.textContent = await response.text()
         paragrafoNotificador.style.color = "#32d65e"
 
+        if(tipo === 'PRESTADOR') {
+            localStorage.setItem('token_prestador', token)
+            window.location.href = 'dashboardprestador.html'
+        }else {
+             localStorage.setItem('token_usuario', token)
+            window.location.href = 'dashboard.html'; 
+        }
         window.location.href = 'dashboard.html';
     } catch(error){
         paragrafoNotificador.textContent = "Erro de conexão. Tente novamente "

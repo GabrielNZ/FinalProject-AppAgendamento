@@ -1,0 +1,108 @@
+version: '3.8'
+
+services:
+  mysqldb:
+    image: mysql:8.0
+    container_name: mysqldb
+    environment:
+      - MYSQL_ROOT_PASSWORD=123
+      - MYSQL_DATABASE=agendamentoproject
+    ports:
+      - "3306:3306"
+
+  eureka-server:
+    build: ./EurekaServer
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+
+  config-server:
+    build: ./ConfigServer
+    container_name: config-server
+    ports:
+      - "8888:8888"
+    depends_on:
+      - eureka-server
+    environment:
+      - EUREKA_URL=http://eureka-server:8761/eureka
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z localhost 8888 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  gateway:
+    build: ./Gateway
+    container_name: gateway-server
+    ports:
+      - "8765:8765"
+    depends_on:
+      config-server:
+        condition: service_healthy
+    environment:
+      - EUREKA_URL=http://eureka-server:8761/eureka
+      - SPRING_CONFIG_IMPORT=configserver:http://config-server:8888
+      - DB_HOST=mysqldb
+
+  usuario-service:
+    build: ./Usuario
+    container_name: usuario-server
+    depends_on:
+      config-server:
+        condition: service_healthy
+    environment:
+      - EUREKA_URL=http://eureka-server:8761/eureka
+      - SPRING_CONFIG_IMPORT=configserver:http://config-server:8888
+      - DB_HOST=mysqldb
+      - TZ=America/Sao_Paulo
+
+  servicos-service:
+    build: ./Servicos
+    container_name: servicos-server
+    depends_on:
+      config-server:
+        condition: service_healthy
+    environment:
+      - EUREKA_URL=http://eureka-server:8761/eureka
+      - SPRING_CONFIG_IMPORT=configserver:http://config-server:8888
+      - DB_HOST=mysqldb
+      - TZ=America/Sao_Paulo
+
+  notificacao-service:
+    build: ./Notificacao
+    container_name: notificacao-server
+    depends_on:
+      config-server:
+        condition: service_healthy
+    environment:
+      - EUREKA_URL=http://eureka-server:8761/eureka
+      - SPRING_CONFIG_IMPORT=configserver:http://config-server:8888
+      - DB_HOST=mysqldb
+      - EMAIL=${EMAIL}
+      - EMAIL_TOKEN=${EMAIL_TOKEN}
+      - TZ=America/Sao_Paulo
+
+  disponibilidade-service:
+    build: ./DisponibilidadeOcupada
+    container_name: disponibilidade-server
+    depends_on:
+      config-server:
+        condition: service_healthy
+    environment:
+      - EUREKA_URL=http://eureka-server:8761/eureka
+      - SPRING_CONFIG_IMPORT=configserver:http://config-server:8888
+      - DB_HOST=mysqldb
+      - TZ=America/Sao_Paulo
+
+  agendamento-service:
+    build: ./Agendamento
+    container_name: agendamento-server
+    depends_on:
+      - disponibilidade-service
+      - notificacao-service
+    command: sh -c "sleep 10 && java -jar app.jar"
+    environment:
+      - EUREKA_URL=http://eureka-server:8761/eureka
+      - SPRING_CONFIG_IMPORT=configserver:http://config-server:8888
+      - DB_HOST=mysqldb
+      - TZ=America/Sao_Paulo

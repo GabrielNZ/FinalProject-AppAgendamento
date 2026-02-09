@@ -1,4 +1,4 @@
-const token = localStorage.getItem('token');
+const token = localStorage.getItem('token_prestador')
 const tituloInfo = document.getElementById('usuario-infos')
 var abaServico = false
 var abaAgendamento = false
@@ -44,7 +44,7 @@ function payloadDoToken(token) {
         return JSON.parse(stringPayload);
     } catch (e) {
         console.error("Erro ao processar o token:", e);
-        localStorage.removeItem('token')
+        localStorage.removeItem('token_prestador')
         window.location.href = 'loginpage.html';
     }
 }
@@ -73,10 +73,10 @@ async function inicializarDashboardInicio(tipoUsuario, token){
         },
     });
     if (!responseUsuario.ok) {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token_prestador')
         tituloInfo.textContent = 'Error'
         tituloInfo.style.color = "#d63232ff";
-        //window.location.href = 'loginpage.html';  
+        window.location.href = 'loginpage.html';  
     }
     const responseServicos = await fetch('http://localhost:8765/servicos/prestador/'+idUsuario,    {
         method: 'GET',
@@ -85,10 +85,10 @@ async function inicializarDashboardInicio(tipoUsuario, token){
         },
     });
     if (!responseServicos.ok) {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token_prestador')
         tituloInfo.textContent = 'Error'
         tituloInfo.style.color = "#d63232ff";
-        //window.location.href = 'loginpage.html';  
+        window.location.href = 'loginpage.html';  
     }
 const serviosJson = await responseServicos.json()
 const usuarioJson = await responseUsuario.json();
@@ -128,7 +128,7 @@ if (agendamentosAgendados.length > 0) {
         },
     });
     if (!responseUsuario.ok) {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token_prestador')
         tituloInfo.textContent = 'Error'
         tituloInfo.style.color = "#d63232ff";
         //window.location.href = 'loginpage.html';  
@@ -146,10 +146,10 @@ async function pegarAgendamentos(token) {
         },
     });
     if (!response.ok) {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token_prestador')
         tituloInfo.textContent = 'Error'
         tituloInfo.style.color = "#d63232ff";
-        //window.location.href = 'loginpage.html';  
+        window.location.href = 'loginpage.html';  
     }
     return await response.json();
 }
@@ -197,10 +197,10 @@ async function criarAgendamento(agendamento, token) {
         },
     });
     if (!responseServico.ok) {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token_prestador')
         tituloInfo.textContent = 'Error'
         tituloInfo.style.color = "#d63232ff";
-        //window.location.href = 'loginpage.html';  
+        window.location.href = 'loginpage.html';  
     }
     const servico = await responseServico.json();
     const responseCliente = await fetch('http://localhost:8765/usuarios/'+agendamento.clienteId,    {
@@ -210,10 +210,10 @@ async function criarAgendamento(agendamento, token) {
         },
     });
     if (!responseCliente.ok) {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token_prestador')
         tituloInfo.textContent = 'Error'
         tituloInfo.style.color = "#d63232ff";
-        //window.location.href = 'loginpage.html';  
+        window.location.href = 'loginpage.html';  
     }
     const cliente = await responseCliente.json();
     const novoAgendamento = {
@@ -249,10 +249,10 @@ async function paginaMeusServicos() {
             },
             });
         if  (!response.ok) {
-            localStorage.removeItem('token')
+            localStorage.removeItem('token_prestador')
             tituloInfo.textContent = 'Error'
             tituloInfo.style.color = "#d63232ff";
-            //window.location.href = 'loginpage.html'; 
+            window.location.href = 'loginpage.html'; 
         }
     const servicos = await response.json()
     for(const servicosObj of servicos) {
@@ -342,10 +342,10 @@ async function salvarCriarServico(servicoObj) {
         body: JSON.stringify(servicoObj)
     });
     if (!responseServico.ok) {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token_prestador')
         tituloInfo.textContent = 'Error'
         tituloInfo.style.color = "#d63232ff";
-        //window.location.href = 'loginpage.html';  
+        window.location.href = 'loginpage.html';  
     }
     const aba = document.getElementById('agendamento-confirmado')
     aba.remove()
@@ -611,7 +611,7 @@ async function aprovarAgendamento(agendamento) {
         },
     });
     if (!response.ok) {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token_prestador')
         tituloInfo.textContent = 'Error'
         tituloInfo.style.color = "#d63232ff";
         //window.location.href = 'loginpage.html';  
@@ -627,10 +627,10 @@ async function rejeitarAgendamento(agendamento) {
         },
     });
     if (!response.ok) {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token_prestador')
         tituloInfo.textContent = 'Error'
         tituloInfo.style.color = "#d63232ff";
-        //window.location.href = 'loginpage.html';  
+        window.location.href = 'loginpage.html';  
     }
     abaAgendamento = true
     paginaAgendamentosRecebidos()
@@ -643,10 +643,10 @@ async function cancelarAgendamento(agendamento) {
         },
     });
     if (!response.ok) {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token_prestador')
         tituloInfo.textContent = 'Error'
         tituloInfo.style.color = "#d63232ff";
-        //window.location.href = 'loginpage.html';  
+        window.location.href = 'loginpage.html';  
     }
     abaAgendamento = true
     filtroAprovados()
@@ -874,10 +874,10 @@ async function paginaDisponibilidade() {
         },
         });
         if (!responseUsuario.ok) {
-            localStorage.removeItem('token')
+            localStorage.removeItem('token_prestador')
             tituloInfo.textContent = 'Error'
             tituloInfo.style.color = "#d63232ff";
-            //window.location.href = 'loginpage.html';  
+            window.location.href = 'loginpage.html';  
         }
         const ordemPrioridade = ["SEGUNDA", "TERCA", "QUARTA", "QUINTA", "SEXTA"];
         const listaDisponibilidades = await responseUsuario.json()
@@ -983,10 +983,10 @@ async function adicionarDisponibilidade(disponibilidade) {
         body: JSON.stringify(disponibilidade)
         });
         if (!responseUsuario.ok) {
-            localStorage.removeItem('token')
+            localStorage.removeItem('token_prestador')
             tituloInfo.textContent = 'Error'
             tituloInfo.style.color = "#d63232ff";
-            //window.location.href = 'loginpage.html';  
+            window.location.href = 'loginpage.html';  
         }
         abaServico = true
         paginaDisponibilidade()
@@ -1005,7 +1005,7 @@ function obterConfigStatus(agendamento) {
     return config
     }
     function sair() {
-    localStorage.removeItem('token')
+    localStorage.removeItem('token_prestador')
     window.location.href = 'loginpage.html';
 }
 function toLocalDateTimeString(data) {

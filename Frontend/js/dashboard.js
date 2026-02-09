@@ -1,4 +1,4 @@
-const token = localStorage.getItem('token');
+const token = localStorage.getItem('token_usuario')
 const tituloInfo = document.getElementById('usuario-infos')
 var abaServico = false
 const mapaDias = {
@@ -37,7 +37,7 @@ function payloadDoToken(token) {
         return JSON.parse(stringPayload);
     } catch (e) {
         console.error("Erro ao processar o token:", e);
-        localStorage.removeItem('token')
+        localStorage.removeItem('token_usuario')
         window.location.href = 'loginpage.html';
     }
 }
@@ -64,10 +64,10 @@ async function inicializarDashboardInicio(tipoUsuario, token){
         },
     });
     if (!response.ok) {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token_usuario')
         tituloInfo.textContent = 'Error'
         tituloInfo.style.color = "#d63232ff";
-        //window.location.href = 'loginpage.html';  
+        window.location.href = 'loginpage.html';  
     }
 const usuarioJson = await response.json();
 tituloInfo.textContent = tipoUsuario+": "+usuarioJson.nome
@@ -88,10 +88,10 @@ async function pegarAgendamentos(token) {
         },
     });
     if (!response.ok) {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token_usuario')
         tituloInfo.textContent = 'Error'
         tituloInfo.style.color = "#d63232ff";
-        //window.location.href = 'loginpage.html';  
+        window.location.href = 'loginpage.html';  
     }
     return await response.json();
 }
@@ -131,7 +131,7 @@ async function inicializarDashboardAgendamentos(agendamentos){
 }
 
 function sair() {
-    localStorage.removeItem('token')
+    localStorage.removeItem('token_usuario')
     window.location.href = 'loginpage.html';
 }
 
@@ -147,10 +147,10 @@ async function criarAgendamento(agendamento, token) {
         },
     });
     if (!responseServico.ok) {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token_usuario')
         tituloInfo.textContent = 'Error'
         tituloInfo.style.color = "#d63232ff";
-        //window.location.href = 'loginpage.html';  
+        window.location.href = 'loginpage.html';  
     }
     const servico = await responseServico.json();
     const responsePrestador = await fetch('http://localhost:8765/usuarios/'+agendamento.prestadorId,    {
@@ -160,10 +160,10 @@ async function criarAgendamento(agendamento, token) {
         },
     });
     if (!responsePrestador.ok) {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token_usuario')
         tituloInfo.textContent = 'Error'
         tituloInfo.style.color = "#d63232ff";
-        //window.location.href = 'loginpage.html';  
+        window.location.href = 'loginpage.html';  
     }
     const prestador = await responsePrestador.json();
     const novoAgendamento = {
@@ -208,14 +208,35 @@ async function iniciarAgendarServico() {
             },
         });
         if (!response.ok) {
-            localStorage.removeItem('token')
+            localStorage.removeItem('token_usuario')
             tituloInfo.textContent = 'Error'
             tituloInfo.style.color = "#d63232ff";
-            //window.location.href = 'loginpage.html';  
+            window.location.href = 'loginpage.html';  
         }
         const listaServicos = await response.json();
-
+        if(listaServicos.length < 1) {
+            const htmlServico = `
+        <div class="servico-box">
+                    <div id="agendamento-informations">
+                
+                    <ul id="lista-agendamentos" style="margin-bottom: -12px">
+                        <li class="li-agendamento">
+                            <div class="agendamento-box">
+                                <div style="margin: auto;">
+                                    <p class="nomeservico" style="font-size: medium; font-weight: 500;">Nenhum serviço encontrado...</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+            </div>  
+        
+        `
+        informationContainer.innerHTML += htmlServico
+        agendarServico.classList.remove('list-item')
+        agendarServico.classList.add('selected')
+        }
         for(const servico of listaServicos) {
+            console.log(servico)
             const response = await fetch('http://localhost:8765/usuarios/'+servico.prestador_id,    {
             method: 'GET',
             headers: { 
@@ -223,10 +244,10 @@ async function iniciarAgendarServico() {
             },
             });
         if  (!response.ok) {
-            localStorage.removeItem('token')
+            localStorage.removeItem('token_usuario')
             tituloInfo.textContent = 'Error'
-            tituloInfo.style.color = "#d63232ff";
-            //window.location.href = 'loginpage.html'; 
+            tituloInfo.style.color = "#d63232ff"; 
+            window.location.href = 'loginpage.html';  
         }
         const prestador = await response.json();
         const htmlServico = `
@@ -263,10 +284,10 @@ async function agendarAgora(servico) {
         },
     });
     if (!response.ok) {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token_usuario')
         tituloInfo.textContent = 'Error'
         tituloInfo.style.color = "#d63232ff";
-        //window.location.href = 'loginpage.html';  
+        window.location.href = 'loginpage.html';  
     }
     const servicoObj = await response.json();
     const responsePrestador = await fetch('http://localhost:8765/usuarios/'+servicoObj.prestador_id,    {
@@ -276,10 +297,10 @@ async function agendarAgora(servico) {
         },
     });
     if (!responsePrestador.ok) {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token_usuario')
         tituloInfo.textContent = 'Error'
         tituloInfo.style.color = "#d63232ff";
-        //window.location.href = 'loginpage.html';  
+        window.location.href = 'loginpage.html';  
     }
     const prestador = await responsePrestador.json();
     const responseDisponibilidade = await fetch('http://localhost:8765/usuarios/disponibilidade/prestador/'+prestador.id,    {
@@ -289,10 +310,10 @@ async function agendarAgora(servico) {
         },
     });
     if (!responseDisponibilidade.ok) {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token_usuario')
         tituloInfo.textContent = 'Error'
         tituloInfo.style.color = "#d63232ff";
-        //window.location.href = 'loginpage.html';  
+        window.location.href = 'loginpage.html';  
     }
     const disponibilidadePrestador = await responseDisponibilidade.json();
     const htmlServicoAgendar =
@@ -401,10 +422,10 @@ async function selecionarDia(diaDaSemanaEscolhido, disponibilidadePrestador, val
         body: JSON.stringify(agendamentoData)
         });
         if (!responseDisponibilidade.ok) {
-            localStorage.removeItem('token')
+            localStorage.removeItem('token_usuario')
             tituloInfo.textContent = 'Error'
             tituloInfo.style.color = "#d63232ff";
-            //window.location.href = 'loginpage.html';  
+            window.location.href = 'loginpage.html';  
         }
         const responseEstaDisponivel = await responseDisponibilidade.json();
         if(!responseEstaDisponivel) {
@@ -538,10 +559,10 @@ async function agendar(infoAgendamento){
         body: JSON.stringify(infoAgendamento)
     });
     if (!response.ok) {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token_usuario')
         tituloInfo.textContent = 'Error'
         tituloInfo.style.color = "#d63232ff";
-        //window.location.href = 'loginpage.html';  
+        window.location.href = 'loginpage.html';  
     }
     const html = `
     <div id="agendamento-confirmado">
