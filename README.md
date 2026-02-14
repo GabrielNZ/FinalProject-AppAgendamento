@@ -35,6 +35,10 @@ considero uma grande vitória o simples fato do código ser funcional.
 
 Sem conhecimento ainda em um framework, utilizei fetch para as requisições REST e manipulação do HTML com JS para o site.
 
+- [Demonstração Projeto Agendamento ( PT-BR )](https://www.youtube.com/watch?v=pPAIpPzvmSo)
+
+https://github.com/user-attachments/assets/94874ef1-c1d9-445e-afd3-8b43b765b0be
+
 # en-US 🇺🇸
 
 ### About the project
