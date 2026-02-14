@@ -782,7 +782,7 @@ async function inicioStart() {
     const html = `
             <div id="sugestion-container">
                 <section class="info-section">
-                    <div onclick="agendamentoPendentes()" class="info-container container" id="agendamentos-pendentes">
+                    <div onclick="paginaAgendamentosRecebidos()" class="info-container container" id="agendamentos-pendentes">
                         <p class="p-titulo-info">Agendamentos Pendentes</p>
                         <p id="info-agendamentos-pendentes">0</p>
                         <p>Clique para Aprovar/Rejeitar</p>

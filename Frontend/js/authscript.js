@@ -82,15 +82,13 @@ async function realizarRegistro() {
 
         paragrafoNotificador.textContent = await response.text()
         paragrafoNotificador.style.color = "#32d65e"
-
-        if(tipo === 'PRESTADOR') {
+        if(tipo.value === 'PRESTADOR') {
             localStorage.setItem('token_prestador', token)
             window.location.href = 'dashboardprestador.html'
         }else {
-             localStorage.setItem('token_usuario', token)
+            localStorage.setItem('token_usuario', token)
             window.location.href = 'dashboard.html'; 
         }
-        window.location.href = 'dashboard.html';
     } catch(error){
         paragrafoNotificador.textContent = "Erro de conexão. Tente novamente "
         paragrafoNotificador.style.color = "#d63232ff"
