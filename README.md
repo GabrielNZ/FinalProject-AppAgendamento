@@ -49,7 +49,7 @@ https://github.com/user-attachments/assets/94874ef1-c1d9-445e-afd3-8b43b765b0be
 ### 🚀 Como rodar na minha máquina?
 1. Clone o repositório: `git clone https://github.com/GabrielNZ/FinalProject-AppAgendamento.git` && `cd FinalProject-AppAgendamento`.
 2. Configure as variaveis de ambiente no arquivo `.env`.
-3. Insira no console `docker compose up -d --build` **ou** Abra o `docker-compose.yml` e inicialize o mesmo (Caso esteja usando uma IDE como ambiente)<br>
+3. Insira no console `docker compose up -d --build`<br>
 (A primeira inicialização pode demorar alguns minutos.)
 4. Abra a pagina `Frontend/html/loginpage.html`.
 
