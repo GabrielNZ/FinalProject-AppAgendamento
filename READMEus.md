@@ -1,8 +1,6 @@
 # 📆 SchedulingApp Project
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/GabrielNZ/FinalProject-AppAgendamento/blob/main/LICENSE)
 
-###🚦 Como Executar o Projeto
-
 # en-US 🇺🇸
 
 ### About the project
@@ -32,6 +30,23 @@ It consists of an application in which, through a dashboard, clients and provide
 I consider it a great achievement that the code is functional.
 
 Still without knowledge of a framework, I used fetch for REST requests and HTML manipulation with JS for the website.
+
+# 🚦 Running the Project
+### 🛠 Prerequisites
+- Git
+- Docker
+### 🚀 How to run it on my machine?
+1. Clone the repository: `git clone https://github.com/GabrielNZ/FinalProject-AppAgendamento.git` && `cd FinalProject-AppAgendamento`.
+2. Set up the environment variables in the `.env` file.
+3. Run docker `docker compose up -d --build` in your terminal.<br>
+(The first initialization may take a few minutes.)
+4. Open the `Frontend/html/loginpage.html` file in your browser.
+
+### 💡 Troubleshooting:
+If you encounter an error related to the `minimum Docker version`:
+1. Open your Docker Desktop.
+2. Go to `Settings` > `Docker Engine` > and add the following line: `"min-api-version": "1.24"`
+<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/56b5e336-1ac2-4f8d-8d74-863fc1fe3d34" />
 
 ## 🎯 Tecnologies
 ### Back end
