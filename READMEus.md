@@ -8,6 +8,8 @@
 Before starting my university journey, I really wanted to apply everything I had learned in this 1 year of study into a big real project. **Here it is!**
 After 3 months of daily programming, I present my first **Full Stack** project.
 
+Unfortunately, when I started this project, I automatically began coding in my native language, Portuguese. I only realized this halfway through the development. To maintain consistency and avoid having a codebase split between two languages, I decided to finish the project in Portuguese. However, all project documentation and explanations here on GitHub will be provided in English."
+
 It consists of an application in which, through a dashboard, clients and providers can organize service scheduling, that is:
 - Provider -> Creates service and weekly availability.
 - Client -> Requests the scheduling of a service at an available time.
