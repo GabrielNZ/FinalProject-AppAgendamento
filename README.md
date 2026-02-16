@@ -1,7 +1,9 @@
 # 📆 AppAgendamento Project / SchedulingApp Project
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/GabrielNZ/FinalProject-AppAgendamento/blob/main/LICENSE)
 
-## Estrutura do Projeto / Project Structure
+### [English Version](./READMEus.md)
+
+## Estrutura do Projeto
 
 <img width="600" height="450" alt="image" src="https://github.com/user-attachments/assets/ca259c05-d02e-406f-bbc3-84220925078a"/>
 
@@ -39,9 +41,25 @@ Sem conhecimento ainda em um framework, utilizei fetch para as requisições RES
 
 https://github.com/user-attachments/assets/94874ef1-c1d9-445e-afd3-8b43b765b0be
 
-###🚦 Como Executar o Projeto
 
-## 🎯 Tecnologias / Tecnologies
+# 🚦 Como Executar o Projeto
+### 🛠 Pré-requisitos
+- Git
+- Docker
+### 🚀 Como rodar na minha máquina?
+1. Clone o repositório: `git clone https://github.com/GabrielNZ/FinalProject-AppAgendamento.git` && `cd FinalProject-AppAgendamento`.
+2. Configure as variaveis de ambiente no arquivo `.env`.
+3. Insira no console `docker compose up -d --build` **ou** Abra o `docker-compose.yml` e inicialize o mesmo (Caso esteja usando uma IDE como ambiente)<br>
+(A primeira inicialização pode demorar alguns minutos.)
+4. Abra a pagina `Frontend/html/loginpage.html`.
+
+### Obs:
+Caso ocorra um erro relacionado à `versao minima do Docker`:
+1. Abra seu Docker Desktop
+2. Vá na aba de `Configurações` > `Docker Engine` > e adicione esse linha: `"min-api-version": "1.24"`
+<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/56b5e336-1ac2-4f8d-8d74-863fc1fe3d34" />
+
+## 🎯 Tecnologias
 ### Back end
 - Java
 - JPA
