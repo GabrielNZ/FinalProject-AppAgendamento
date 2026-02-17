@@ -36,13 +36,14 @@ Still without knowledge of a framework, I used fetch for REST requests and HTML 
 # 🚦 Running the Project
 ### 🛠 Prerequisites
 - Git
+- VSCode (Live Server)
 - Docker
 ### 🚀 How to run it on my machine?
 1. Clone the repository: `git clone https://github.com/GabrielNZ/FinalProject-AppAgendamento.git` && `cd FinalProject-AppAgendamento`.
 2. Set up the environment variables in the `.env` file.
 3. Run docker `docker compose up -d --build` in your terminal.<br>
 (The first initialization may take a few minutes.)
-4. Open the `Frontend/html/loginpage.html` file in your browser.
+4. Open the `Frontend/html/loginpage.html` file with `Live Server` extension in `VSCode`.
 
 ### 💡 Troubleshooting:
 If you encounter an error related to the `minimum Docker version`:
